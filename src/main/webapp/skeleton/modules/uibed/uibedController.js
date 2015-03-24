@@ -1,5 +1,5 @@
-function themeController($rootScope, $scope, $log, wydNotifyService) {
-	$rootScope.viewName = 'Theme';
+function uibedController($rootScope, $scope, $log, wydNotifyService) {
+	$rootScope.viewName = 'UI Bed';
 
 	$scope.info = function() {
 		wydNotifyService.addInfo('info message...', true);
@@ -17,6 +17,6 @@ function themeController($rootScope, $scope, $log, wydNotifyService) {
 		wydNotifyService.addError('erro message...', true);
 	};
 
-	$log.debug('themeController...');
+	$log.debug('uibedController...');
 }
-appControllers.controller('themeController', themeController);
+appControllers.controller('uibedController', uibedController);

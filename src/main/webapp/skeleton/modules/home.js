@@ -14,7 +14,7 @@ var dependents = [ 'ngRoute', 'ngSanitize' ];
 dependents.push('ngStorage');
 dependents.push('green.inputmask4angular');
 dependents.push('ngNotify');
-//dependents.push('oitozero.ngSweetAlert');
+// dependents.push('oitozero.ngSweetAlert');
 dependents.push('app.filters');
 dependents.push('app.directives');
 dependents.push('app.services');
@@ -41,30 +41,6 @@ app.config(function($routeProvider, $locationProvider) {
 		reloadOnSearch : false
 	});
 
-	$routeProvider.when('/transfer', {
-		templateUrl : 'modules/transfer/d.html',
-		controller : 'transferController',
-		reloadOnSearch : false
-	});
-
-	$routeProvider.when('/products', {
-		templateUrl : 'modules/product/d.html',
-		controller : 'productController',
-		reloadOnSearch : false
-	});
-
-	$routeProvider.when('/customers', {
-		templateUrl : 'modules/customer/d.html',
-		controller : 'customerController',
-		reloadOnSearch : false
-	});
-
-	$routeProvider.when('/employees', {
-		templateUrl : 'modules/employee/d.html',
-		controller : 'employeeController',
-		reloadOnSearch : false
-	});
-
 	$routeProvider.when('/settings', {
 		templateUrl : 'modules/setting/d.html',
 		controller : 'settingController',
@@ -77,9 +53,9 @@ app.config(function($routeProvider, $locationProvider) {
 		reloadOnSearch : false
 	});
 
-	$routeProvider.when('/theme', {
-		templateUrl : 'modules/theme/d.html',
-		controller : 'themeController',
+	$routeProvider.when('/uibed', {
+		templateUrl : 'modules/uiBed/d.html',
+		controller : 'uibedController',
 		reloadOnSearch : false
 	});
 
