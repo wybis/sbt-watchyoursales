@@ -1,0 +1,85 @@
+body {
+	
+}
+
+hr.hr-xtra-small {
+	margin-top: 0.1rem;
+	margin-bottom: 0.1rem;
+	border-width: 0;
+	border-top: 1px solid #E1E1E1;
+}
+
+hr.hr-small {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	border-width: 0;
+	border-top: 1px solid #E1E1E1;
+}
+
+hr.hr-medium {
+	margin-top: 1.0rem;
+	margin-bottom: 1.0rem;
+	border-width: 0;
+	border-top: 1px solid #E1E1E1;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.button-ellipse {
+	border-radius: 100px;
+}
+
+.jumptron {
+	margin-top: 6rem;
+	text-align: center;
+}
+
+#page-header {
+	margin-top: 1.0rem;
+}
+
+#page-body {
+	min-height: 540px;
+}
+
+#footer {
+	/*
+	position: fixed;
+	bottom: 10;
+	*/
+	
+}
+
+#intro {
+	min-height: 400px
+}
+
+#features {
+	min-height: 400px
+}
+
+#about {
+	min-height: 400px
+}
+
+#signIn {
+	margin-top: 11rem;
+	margin-bottom: 11rem;
+}
+
+@media ( min-width : 550px) {
+	.jumptron {
+		margin-top: 12rem;
+		margin-bottom: 12rem;
+	}
+}

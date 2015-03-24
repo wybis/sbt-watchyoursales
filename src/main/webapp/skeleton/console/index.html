@@ -1,0 +1,120 @@
+<html lang="en" class="no-js" x-ng-app="app" x-ng-csp x-ng-controller="rootController">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<title>BookShelf - Dev Console</title>
+
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Raleway:400,300,600'>
+	
+	<link rel="stylesheet" href="../assets/skeleton/css/normalize.css">
+	<link rel="stylesheet" href="../assets/skeleton/css/skeleton.css">
+	<link rel="stylesheet" href="../assets/skeleton/css/custom.css">
+	<link rel="stylesheet" href="../assets/colors.min.css">
+	<link rel="stylesheet" href="../assets/fontawesome/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="../assets/ngNotify/ng-notify.min.css">
+	
+	<link rel="stylesheet" href="base.css">
+	
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body x-ng-clock>
+
+<div class="row">
+	<div class="one column">
+		<h4>Console</h4>
+	</div>
+	<div class="eleven columns text-center">
+		<a class="button" x-ng-click="execute('../ping')">
+			Ping
+		</a>
+		<a class="button" x-ng-click="execute('../info')">
+			Info
+		</a>
+		<a class="button" x-ng-click="execute('../sessions/properties')">
+			Ses Props
+		</a>
+		<a class="button" x-ng-click="execute('../system/reset')">
+			Reset
+		</a>
+		<a class="button" x-ng-click="execute('../system/clear')">
+			Clear All
+		</a>
+		<a class="button" x-ng-click="execute('../system/clearTransactions')">
+			Clear Trans
+		</a>
+		<a class="button" href="http://localhost:8082/" target="_blank">
+			Database
+		</a>
+		<a class="button" href="../index-d.html" target="_blank">
+			Desktop
+		</a>		
+	</div>
+</div>
+<hr class="hr-xtra-small"/>
+<div class="row">
+	<div class="one-half column">
+		<strong>Response Message</strong>
+		<pre id="respMessage">{{message | json}}</pre>
+	</div>
+	<div class="one-half column">
+		<strong>Create Branch Via JSON</strong>
+		<form>
+		    <select class="u-full-width" x-sui-select 
+		    	x-ng-model="branchJson" 
+				x-ng-change="onAgencyChange()"
+				x-ng-options="item.name for item in branchsJson">
+     		</select>
+			<textarea class="u-full-width" id="branchJson"
+				x-ng-model="branchJson.json"></textarea>
+    		<button class="button button-primary u-full-width"
+    			x-ng-click="saveMaster()">
+    			Save
+    		</button>
+     	</form>		
+	</div>
+</div>
+<script type="text/javascript"
+	src="../assets/is.min.js"></script>
+<script type="text/javascript"
+	src="../assets/lodash.min.js"></script>
+<script type="text/javascript" 
+	src="../assets/moment.min.js"></script>
+<script type="text/javascript" 
+	src="../assets/jquery.min.js"></script>
+<!-- 
+<script type="text/javascript" 
+	src="../assets/skeleton/js/skeleton.js"></script>
+-->
+<script type="text/javascript"
+	src="../assets/angularjs/angular.js"></script>
+<script type="text/javascript"
+	src="../assets/angularjs/angular-route.js"></script>
+<script type="text/javascript"
+	src="../assets/angularjs/angular-sanitize.js"></script>
+
+<script type="text/javascript" 
+	src="../assets/ngStorage.min.js"></script>
+<script type="text/javascript" 
+	src="../assets/inputmask/jquery.inputmask.bundle.min.js"></script>
+<script type="text/javascript" 
+	src="../assets/inputmask/green.inputmask4angular.js"></script>
+<script type="text/javascript" 
+	src="../assets/ngNotify/ng-notify.min.js"></script>
+	
+<script type="text/javascript" src="../modules/init.js"></script>
+<script type="text/javascript" src="../modules/wydNotify/wydNotifyByNgNotify.js"></script>
+
+<script type="text/javascript" src="../modules/common.js"></script>
+<script type="text/javascript" src="../modules/directives.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

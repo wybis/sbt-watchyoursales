@@ -1,0 +1,163 @@
+<html lang="en" class="no-js" x-ng-app="app" x-ng-csp x-ng-controller="rootController">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<title>Watch Your Sales</title>
+
+	<!-- 
+	<link rel="stylesheet" href="assets/uikit/css/uikit.min.css">
+	-->
+	<link rel="stylesheet" href="assets/uikit/css/uikit.almost-flat.min.css">
+
+	<link rel="stylesheet" href="assets/ngNotify/ng-notify.min.css">
+
+	<link rel="stylesheet" href="modules/base-d.css">
+	<link rel="stylesheet" href="modules/console.css">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body x-ng-clock>
+
+	<nav id="navBar" class="uk-navbar uk-navbar-attached">
+		<div class="uk-container uk-container-center">
+			<a class="uk-navbar-brand" href="console.html">WYS Console</a>
+			
+			<ul class="uk-navbar-nav">
+			    <li>
+			        <a href="" x-ng-click="execute('../ping')">
+			        	Ping
+			        </a>
+			    </li>
+			    <li>
+			        <a href="" x-ng-click="execute('../info')">
+			        	Info
+			        </a>
+			    </li>
+			    <li>
+			        <a href="" x-ng-click="execute('../sessions/properties')">
+			        	Session Properties
+			        </a>
+			    </li>
+			    <li>
+			        <a href="" x-ng-click="execute('../system/reset')">
+			        	Reset
+			        </a>
+			    </li>
+			    <li>
+			        <a href="" x-ng-click="execute('../system/clear')">
+			        	Clear
+			        </a>
+			    </li>
+			    <li>
+			        <a href="" x-ng-click="execute('../system/clearTransactions')">
+			        	Clear Transactions
+			        </a>
+			    </li>
+			</ul>
+			<div class="uk-navbar-flip">
+				<ul class="uk-navbar-nav">				    
+				    <li>
+				        <a href="http://localhost:8082/">
+				        	<i class="uk-icon-database"></i> Database
+				        </a>
+				    </li>
+				    <li>
+				        <a href="index-d.html">
+				        	<i class="uk-icon-desktop"></i> Desktop
+				        </a>
+				    </li>
+				    <li>
+				        <a href="index-m.html">
+				        	<i class="uk-icon-mobile"></i> Mobile
+				        </a>
+				    </li>
+				</ul>
+			</div>	
+		</div>
+	</nav>
+			
+	<section id="pageBody" class="uk-container uk-container-center">
+
+		<div class="uk-grid uk-margin-top">
+		    <div class="uk-width-1-2">
+		    	<div class="uk-panel uk-panel-header uk-panel-box uk-panel-box-primary">
+		    		<h3 class="uk-panel-title">Response Message</h3>
+		    		<pre id="respMessage">{{message}}</pre>
+		    	</div>
+		    </div>
+		    <div class="uk-width-1-2">
+		    	<div class="uk-panel uk-panel-header uk-panel-box uk-panel-box-primary">
+		    		<h3 class="uk-panel-title">Create Branch Via JSON</h3>
+		    		<form class="uk-form uk-form-stacked">
+			    		<div class="uk-form-row">
+				    		<div class="uk-form-controls">
+							    <select class="uk-width-1-1" x-sui-select 
+							    	x-ng-model="branchJson" 
+									x-ng-change="onAgencyChange()"
+									x-ng-options="item.name for item in branchsJson">
+					     		</select>
+					     	</div>
+				     	</div>	
+			    		<div class="uk-form-row">
+				    		<div class="uk-form-controls">
+								<textarea class="uk-width-1-1" id="branchJson"
+									x-ng-model="branchJson.json"></textarea>
+					     	</div>
+				     	</div>	
+			    		<div class="uk-form-row">
+				    		<div class="uk-form-controls">
+					    		<button class="uk-button uk-button-primary uk-align-center"
+					    			x-ng-click="saveMaster()">
+					    			Save
+					    		</button>
+					     	</div>
+				     	</div>	
+			     	</form>		
+		    	</div>
+		    </div>
+		</div>
+
+	</section>
+
+	
+<script type="text/javascript"
+	src="assets/is.min.js"></script>
+<script type="text/javascript"
+	src="assets/lodash.min.js"></script>
+<script type="text/javascript" 
+	src="assets/moment.min.js"></script>
+<script type="text/javascript" 
+	src="assets/jquery.min.js"></script>
+
+<script type="text/javascript" 
+	src="assets/uikit/js/uikit.min.js"></script>
+
+<script type="text/javascript"
+	src="assets/angularjs/angular.js"></script>
+<script type="text/javascript"
+	src="assets/angularjs/angular-route.js"></script>
+<script type="text/javascript"
+	src="assets/angularjs/angular-sanitize.js"></script>
+
+<script type="text/javascript" 
+	src="assets/ngStorage.min.js"></script>
+<script type="text/javascript" 
+	src="assets/ngNotify/ng-notify.min.js"></script>
+
+<script type="text/javascript" src="modules/init.js"></script>
+<script type="text/javascript" src="modules/wydNotify/wydNotifyByNgNotify.js"></script>
+
+<script type="text/javascript" src="modules/common.js"></script>
+<script type="text/javascript" src="modules/directives.js"></script>
+
+<script type="text/javascript" src="modules/console.js"></script>    
+
+</body>
+</html>

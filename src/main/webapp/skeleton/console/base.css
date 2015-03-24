@@ -1,0 +1,12 @@
+body {
+	margin: 1rem;
+}
+
+#respMessage {
+	min-height: 440px;
+	background-color: #DDDDDD;
+}
+
+#branchJson {
+	min-height: 320px;
+}
