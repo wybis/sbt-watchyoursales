@@ -7,7 +7,9 @@
 
 	<title>Watch Your Sales</title>
 
+	<!-- 
 	<link rel="stylesheet" href="assets/uikit/css/uikit.min.css">
+	-->
 	<link rel="stylesheet" href="assets/uikit/css/uikit.almost-flat.min.css">
 
 	<link rel="stylesheet" href="assets/ngNotify/ng-notify.min.css">
@@ -35,6 +37,9 @@
 			    </li>
 			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='counter']">
 			        <a href="#/counter">Counter</a>
+			    </li>
+			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='transactions']">
+			        <a href="#/transactions">Transactions</a>
 			    </li>
 			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='transfer']">
 			        <a href="#/transfer">Transfer</a>
@@ -159,7 +164,6 @@
 
 <script type="text/javascript" src="modules/setting/settingController.js"></script>
 <script type="text/javascript" src="modules/session/signOutController.js"></script>
-<script type="text/javascript" src="modules/theme/themeController.js"></script>
 
 <script type="text/javascript" src="modules/common.js"></script>
 <script type="text/javascript" src="modules/directives.js"></script>

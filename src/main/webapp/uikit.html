@@ -7,11 +7,9 @@
 
 	<title>WYS UI Bed</title>
 
-	<!-- 
 	<link rel="stylesheet" href="assets/uikit/css/uikit.min.css">
-	-->
 	<link rel="stylesheet" href="assets/uikit/css/uikit.almost-flat.min.css">
-
+ 
 	<link rel="stylesheet" href="assets/ngNotify/ng-notify.min.css">
 
 	<link rel="stylesheet" href="modules/base-d.css">
@@ -34,12 +32,51 @@
 	<section id="pageBody" class="uk-container uk-container-center">
 
 		<div class="uk-grid uk-margin-top">
-			<div class="uk-width-1-2 uk-container-center">
+
+			<div class="uk-width-1-2">
 				<button class="uk-button uk-button-primary" x-ng-click="info()">Info Alert</button>
 				<button class="uk-button uk-button-success" x-ng-click="success()">Success Alert</button>
 				<button class="uk-button uk-button-warning" x-ng-click="warning()">Warning Alert</button>
 				<button class="uk-button uk-button-danger" x-ng-click="error()">Error Alert</button>
 			</div>
+			
+			<div class="uk-width-1-2">
+		    	<div class="uk-panel uk-panel-header uk-panel-box uk-panel-box-primary">
+		    		<h3 class="uk-panel-title">Sign In</h3>
+		    		<form class="uk-form uk-form-stacked">
+			    		<div class="uk-form-row">
+				    		<div class="uk-form-controls floating-label-wrapper">
+			    			<label class="uk-form-label" for="userId"><small>User Id</small></label>
+					        	<div class="uk-form-icon">
+					    			<i class="uk-icon-user"></i>
+						        	<input type="text" class="uk-form-width-large" placeholder="User Id"
+									  	x-ng-model="user.userId" x-wyd-floating-label>
+								</div>	  	
+					     	</div>
+				     	</div>	
+			    		<div class="uk-form-row">
+			    		    <label class="uk-form-label" for="password"><small>Password</small></label>
+				    		<div class="uk-form-controls">
+					        	<div class="uk-form-icon">
+					    			<i class="uk-icon-unlock"></i>
+						  			<input type="password" class="uk-form-width-large" placeholder="Password"
+						  				x-ng-model="user.password">
+						  		</div>		
+					     	</div>
+				     	</div>	
+				     	<hr/>
+			    		<div class="uk-form-row">
+				    		<div class="uk-form-controls">
+					    		<button class="uk-button uk-button-primary uk-align-center"
+					    			x-ng-click="saveMaster()">
+					    			Save
+					    		</button>
+					     	</div>
+				     	</div>	
+			     	</form>		
+		    	</div>
+			</div>
+
 		</div>
 
 	</section>
@@ -56,6 +93,8 @@
 
 <script type="text/javascript" 
 	src="assets/uikit/js/uikit.min.js"></script>
+<script type="text/javascript" 
+	src="assets/uikit/js/components/notify.js"></script>
 
 <script type="text/javascript"
 	src="assets/angularjs/angular.js"></script>
@@ -71,6 +110,9 @@
 
 <script type="text/javascript" src="modules/init.js"></script>
 <script type="text/javascript" src="modules/wydNotify/wydNotifyByNgNotify.js"></script>
+<!-- 
+<script type="text/javascript" src="modules/wydNotify/wydNotifyByUiKit.js"></script>
+-->
 
 <script type="text/javascript" src="modules/common.js"></script>
 <script type="text/javascript" src="modules/directives.js"></script>

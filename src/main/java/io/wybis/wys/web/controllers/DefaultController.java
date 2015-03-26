@@ -1,6 +1,6 @@
 package io.wybis.wys.web.controllers;
 
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Controller;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Log
 @Controller
+@Slf4j
 public class DefaultController {
 
 	@RequestMapping(value = "/ping", method = RequestMethod.GET)

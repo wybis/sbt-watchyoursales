@@ -18,6 +18,8 @@ function signInController($rootScope, $scope, $log, wydNotifyService, $http,
 		$http.post(path, $scope.user).success(function(response) {
 			if (response.type != 0) {
 				$scope.message = response.message;
+				$scope.user.userId = '';
+				$scope.user.password = '';
 				wydNotifyService.addError($scope.message, true);
 			} else {
 				$window.location = 'home-d.html';
