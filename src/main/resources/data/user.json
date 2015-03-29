@@ -1,0 +1,28 @@
+[
+  {
+    "id": "sadmin",
+    "password": "ahaitech4321",
+    "emailId": "defualt@127.0.0.1",
+    "firstName": "Super",
+    "lastName": "Administrator",
+    "status": "A",
+    "roleId": "admin",
+    "createTime": 1409288001000,
+    "updateTime": 1409288001000,
+    "createBy": "system",
+    "updateBy": "system"
+  },
+  {
+    "id": "maxmoney-mc",
+    "password": "ahaitech4321",
+    "emailId": "defualt@127.0.0.1",
+    "firstName": "Maxmoney",
+    "lastName": "Money Changer",
+    "status": "A",
+    "roleId": "customer",
+    "createTime": 1409288001000,
+    "updateTime": 1409288001000,
+    "createBy": "system",
+    "updateBy": "system"
+  }
+]

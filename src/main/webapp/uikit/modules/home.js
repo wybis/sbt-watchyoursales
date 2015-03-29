@@ -40,30 +40,6 @@ app.config(function($routeProvider, $locationProvider) {
 		reloadOnSearch : false
 	});
 
-	$routeProvider.when('/transfer', {
-		templateUrl : 'modules/transfer/d.html',
-		controller : 'transferController',
-		reloadOnSearch : false
-	});
-
-	$routeProvider.when('/products', {
-		templateUrl : 'modules/product/d.html',
-		controller : 'productController',
-		reloadOnSearch : false
-	});
-
-	$routeProvider.when('/customers', {
-		templateUrl : 'modules/customer/d.html',
-		controller : 'customerController',
-		reloadOnSearch : false
-	});
-
-	$routeProvider.when('/employees', {
-		templateUrl : 'modules/employee/d.html',
-		controller : 'employeeController',
-		reloadOnSearch : false
-	});
-
 	$routeProvider.when('/settings', {
 		templateUrl : 'modules/setting/d.html',
 		controller : 'settingController',

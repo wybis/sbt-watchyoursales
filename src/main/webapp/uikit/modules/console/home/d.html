@@ -1,0 +1,38 @@
+<div class="uk-grid uk-grid-divider">
+    <div class="uk-width-1-2">
+    	<div class="uk-panel uk-panel-header uk-panel-box uk-panel-box-primary">
+    		<h3 class="uk-panel-title">Create Branch Via JSON</h3>
+    		<form class="uk-form uk-form-stacked">
+	    		<div class="uk-form-row">
+		    		<div class="uk-form-controls">
+					    <select class="uk-width-1-1" 
+					    	x-ng-model="branchJson" 
+							x-ng-change="onAgencyChange()"
+							x-ng-options="item.name for item in branchsJson">
+			     		</select>
+			     	</div>
+		     	</div>	
+	    		<div class="uk-form-row">
+		    		<div class="uk-form-controls">
+						<textarea class="uk-width-1-1" id="branchJson"
+							x-ng-model="branchJson.json"></textarea>
+			     	</div>
+		     	</div>	
+	    		<div class="uk-form-row">
+		    		<div class="uk-form-controls">
+			    		<button class="uk-button uk-button-primary uk-align-center"
+			    			x-ng-click="saveMaster()">
+			    			Save
+			    		</button>
+			     	</div>
+		     	</div>	
+	     	</form>		
+    	</div>
+    </div>
+    <div class="uk-width-1-2">
+    	<div class="uk-panel uk-panel-header uk-panel-box uk-panel-box-primary">
+    		<h3 class="uk-panel-title">Response Message</h3>
+    		<pre id="respMessage">{{message}}</pre>
+    	</div>
+    </div>
+</div>

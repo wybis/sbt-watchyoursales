@@ -1,0 +1,166 @@
+<html lang="en" class="no-js" x-ng-app="app" x-ng-csp x-ng-controller="rootController">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<title>Watch Your Sales</title>
+
+	<link rel="stylesheet" href="../assets/uikit/css/uikit.min.css">
+	<link rel="stylesheet" href="../assets/uikit/css/uikit.almost-flat.min.css">
+
+	<link rel="stylesheet" href="../assets/ngNotify/ng-notify.min.css">
+
+	<link rel="stylesheet" href="modules/base-d.css">
+	<link rel="stylesheet" href="modules/home-d.css">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body x-ng-clock>
+	
+	<nav id="navBar" class="uk-navbar uk-navbar-attached">
+		<div class="uk-container uk-container-center">
+			<a class="uk-navbar-brand" href="uikit-d.html">Watch Your Sales</a>
+			
+			<ul class="uk-navbar-nav">
+			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='home']">
+			        <a href="#/home">
+			        	<i class="uk-icon-home"></i> Home
+			        </a>
+			    </li>
+			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='counter']">
+			        <a href="#/counter">Counter</a>
+			    </li>
+			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='transactions']">
+			        <a href="#/transactions">Transactions</a>
+			    </li>
+			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='transfer']">
+			        <a href="#/transfer">Transfer</a>
+			    </li>
+			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='stocks']">
+			        <a href="#/stocks">Stocks</a>
+			    </li>
+			    <li class="uk-parent" data-uk-dropdown>
+			        <a href="">Masters <i class="uk-icon-caret-down"></i></a>
+			        <div class="uk-dropdown uk-dropdown-navbar">
+			        	<ul class="uk-nav uk-nav-navbar">
+			        		<li><a href="#/products">Products</a>
+			        		<li class="uk-nav-divider"></li>
+			        		<li><a href="#/customers">Customers</a>
+			        		<li><a href="#/dealers">Dealers</a>
+			        		<li><a href="#/employees">Employees</a>
+			        		<li class="uk-nav-divider"></li>
+			        		<li><a href="#/stores">Stores</a>
+			        	</ul>
+			        </div>
+			    </li>
+			</ul>
+			<div class="uk-navbar-flip">
+				<ul class="uk-navbar-nav">				    
+				    <li x-ng-class="{true:'uk-active', false:''}[viewName=='settings']">
+				        <a href="#/settings">
+				        	<i class="uk-icon-cog"></i> Settings
+				        </a>
+				    </li>
+				    <li x-ng-class="{true:'uk-active', false:''}[viewName=='signOut']">
+				        <a href="#/signOut">
+				        	<i class="uk-icon-sign-out"></i> Sign Out
+				        </a>
+				    </li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<section id="headerBar" class="uk-container uk-container-center uk-margin-small">
+		<div class="uk-grid">
+		    <div class="uk-width-1-2">
+		    	<div class="uk-float-left">
+		    	<strong><small>{{viewName | capitalizeFilter}}</small></strong>
+		    	</div>
+		    </div>
+		    <div class="uk-width-1-2">
+		    	<div class="uk-float-right">
+				<strong><small>
+				{{sessionContext.sessionUser.firstName}} / {{sessionContext.sessionUser.userId}} / {{sessionContext.sessionUser.roleId}}
+				</small></strong>
+				</div>
+		    </div>
+		</div>
+	</section>	
+	
+	<hr class="uk-margin-small"/>		
+
+	<section id="pageBody" class="uk-container uk-container-center">
+		<x-ng-view></x-ng-view>
+	</section>
+
+	<hr class="uk-margin-small-bottom"/>
+	
+	<footer id="footerBar" class="uk-container uk-container-center">
+		<div class="uk-grid">
+			<div class="uk-width-1-2">
+				&copy; 2015 Watch Your Sales by <a target="_blank" href="http://www.wybis.com">Wybis India Pvt. Ltd.</a>
+				&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="#/terms">Terms</a>
+			</div>
+			<div class="uk-width-1-2">
+				<div class="uk-float-right">
+					<a href="console.html">Console</a>
+					&nbsp;&nbsp;
+					<a href="uikit.html">UI Bed</a>
+					&nbsp;&nbsp;
+					<a href="" x-ng-click="viewSource()">Source</a>
+					Version : <strong><small>0.0.1</small></strong>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+<script type="text/javascript"
+	src="../assets/is.min.js"></script>
+<script type="text/javascript"
+	src="../assets/lodash.min.js"></script>
+<script type="text/javascript" 
+	src="../assets/moment.min.js"></script>
+<script type="text/javascript" 
+	src="../assets/jquery.min.js"></script>
+
+<script type="text/javascript" 
+	src="../assets/uikit/js/uikit.min.js"></script>
+
+<script type="text/javascript"
+	src="../assets/angularjs/angular.js"></script>
+<script type="text/javascript"
+	src="../assets/angularjs/angular-route.js"></script>
+<script type="text/javascript"
+	src="../assets/angularjs/angular-sanitize.js"></script>
+
+<script type="text/javascript" 
+	src="../assets/ngStorage.min.js"></script>
+<script type="text/javascript" 
+	src="../assets/inputmask/jquery.inputmask.bundle.min.js"></script>
+<script type="text/javascript" 
+	src="../assets/inputmask/green.inputmask4angular.js"></script>
+<script type="text/javascript" 
+	src="../assets/ngNotify/ng-notify.min.js"></script>
+
+<script type="text/javascript" src="modules/init.js"></script>
+<script type="text/javascript" src="modules/wydNotify/wydNotifyByNgNotify.js"></script>
+
+<script type="text/javascript" src="modules/home/homeController.js"></script>
+
+<script type="text/javascript" src="modules/setting/settingController.js"></script>
+<script type="text/javascript" src="modules/session/signOutController.js"></script>
+
+<script type="text/javascript" src="modules/common.js"></script>
+<script type="text/javascript" src="modules/directives.js"></script>
+<script type="text/javascript" src="modules/home.js"></script>    
+
+</body>
+</html>

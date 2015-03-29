@@ -1,10 +1,26 @@
-function rootController($rootScope, $scope, $log, $http, $filter, $timeout) {
+function rootController($rootScope, $scope, $log, wydNotifyService) {
+
+	$scope.info = function() {
+		wydNotifyService.addInfo('info message...', true);
+	};
+
+	$scope.success = function() {
+		wydNotifyService.addSuccess('success message...', true);
+	};
+
+	$scope.warning = function() {
+		wydNotifyService.addWarning('warning message...', true);
+	};
+
+	$scope.error = function() {
+		wydNotifyService.addError('erro message...', true);
+	};
 
 	$log.info('rootController...');
 }
 appControllers.controller('rootController', rootController);
 
-var dependents = [ 'ngRoute', 'ngSanitize' ];
+var dependents = [ 'ngSanitize' ];
 dependents.push('ngStorage');
 dependents.push('ngNotify');
 dependents.push('app.filters');
@@ -15,31 +31,6 @@ var app = angular.module('app', dependents);
 
 app.config(function($httpProvider) {
 	$httpProvider.interceptors.push('generalHttpInterceptor');
-});
-
-app.config(function($routeProvider, $locationProvider) {
-
-	$routeProvider.when('/', {
-		redirectTo : '/home'
-	});
-
-	$routeProvider.when('/home', {
-		templateUrl : 'modules/console/home/d.html',
-		controller : 'homeController'
-	});
-
-	$routeProvider.when('/systemInfo', {
-		templateUrl : 'modules/console/systemInfo/d.html',
-		controller : 'systemInfoController'
-	});
-
-	$routeProvider.when('/notFound', {
-		templateUrl : 'modules/zgeneral/notFound-d.html'
-	});
-
-	$routeProvider.otherwise({
-		redirectTo : '/notFound'
-	});
 });
 
 function appInit($log, $rootScope, $location, $sessionStorage) {
