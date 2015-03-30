@@ -7,11 +7,7 @@
 
 	<title>Watch Your Sales</title>
 
-	<!-- 
-	<link rel="stylesheet" href="assets/uikit/css/uikit.min.css">
-	-->
-	<link rel="stylesheet" href="assets/uikit/css/uikit.almost-flat.min.css">
-
+	<link rel="stylesheet" href="assets/semantic-ui/semantic.min.css">
 	<link rel="stylesheet" href="assets/ngNotify/ng-notify.min.css">
 
 	<link rel="stylesheet" href="modules/base-d.css">
@@ -24,105 +20,67 @@
 	<![endif]-->
 </head>
 <body x-ng-clock>
-	
-	<nav id="navBar" class="uk-navbar uk-navbar-attached">
-		<div class="uk-container uk-container-center">
-			<a class="uk-navbar-brand" href="uikit-d.html">Watch Your Sales</a>
-			
-			<ul class="uk-navbar-nav">
-			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='home']">
-			        <a href="#/home">
-			        	<i class="uk-icon-home"></i> Home
-			        </a>
-			    </li>
-			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='counter']">
-			        <a href="#/counter">Counter</a>
-			    </li>
-			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='transactions']">
-			        <a href="#/transactions">Transactions</a>
-			    </li>
-			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='transfer']">
-			        <a href="#/transfer">Transfer</a>
-			    </li>
-			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='stocks']">
-			        <a href="#/stocks">Stocks</a>
-			    </li>
-			    <li class="uk-parent" data-uk-dropdown>
-			        <a href="">Masters <i class="uk-icon-caret-down"></i></a>
-			        <div class="uk-dropdown uk-dropdown-navbar">
-			        	<ul class="uk-nav uk-nav-navbar">
-			        		<li><a href="#/products">Products</a>
-			        		<li class="uk-nav-divider"></li>
-			        		<li><a href="#/customers">Customers</a>
-			        		<li><a href="#/dealers">Dealers</a>
-			        		<li><a href="#/employees">Employees</a>
-			        		<li class="uk-nav-divider"></li>
-			        		<li><a href="#/stores">Stores</a>
-			        	</ul>
-			        </div>
-			    </li>
-			</ul>
-			<div class="uk-navbar-flip">
-				<ul class="uk-navbar-nav">				    
-				    <li x-ng-class="{true:'uk-active', false:''}[viewName=='settings']">
-				        <a href="#/settings">
-				        	<i class="uk-icon-cog"></i> Settings
-				        </a>
-				    </li>
-				    <li x-ng-class="{true:'uk-active', false:''}[viewName=='signOut']">
-				        <a href="#/signOut">
-				        	<i class="uk-icon-sign-out"></i> Sign Out
-				        </a>
-				    </li>
-				</ul>
+
+	<nav class="ui fixed red inverted menu navbar page grid">
+		<a class="item" href="home-d.html">Watch Your Sales</a>
+		<a class="item" href="#/home">
+			<i class="home icon"></i> Home
+		</a>
+		<a class="item" href="#/counter">Counter</a>
+		<a class="item" href="#/transactions">Transactions</a>
+		<a class="item" href="#/transfer">Transfer</a>
+		<a class="item" href="#/stocks">Stocks</a>
+		<div class="ui dropdown link item" x-sui-dropdown>
+			Masters
+			<i class="dropdown icon"></i>
+			<div class="menu">
+				<a class="item" href="#/products">Products</a>
+				<div class="ui divider"></div>
+				<a class="item" href="#/customers">Customers</a>
+				<a class="item" href="#/dealers">Dealers</a>
+				<a class="item" href="#/employees">Employees</a>
+				<div class="ui divider"></div>
+				<a class="item" href="#/stores">Stores</a>
 			</div>
 		</div>
+		<a class="right item" href="#/signOut">
+			<i class="sign out icon"></i> Sign Out
+		</a>
+		<a class="right item" href="#/settings">
+			<i class="settings icon"></i> Settings
+		</a>
 	</nav>
-	
-	<section id="headerBar" class="uk-container uk-container-center uk-margin-small">
-		<div class="uk-grid">
-		    <div class="uk-width-1-2">
-		    	<div class="uk-float-left">
-		    	<strong><small>{{viewName | capitalizeFilter}}</small></strong>
-		    	</div>
-		    </div>
-		    <div class="uk-width-1-2">
-		    	<div class="uk-float-right">
-				<strong><small>
-				{{sessionContext.sessionUser.firstName}} / {{sessionContext.sessionUser.userId}} / {{sessionContext.sessionUser.roleId}}
-				</small></strong>
-				</div>
-		    </div>
-		</div>
-	</section>	
-	
-	<hr class="uk-margin-small"/>		
 
-	<section id="pageBody" class="uk-container uk-container-center">
+	<section id="headerBar" class="ui page grid two column">
+		<div class="column left aligned">
+			<strong>{{viewName | capitalizeFilter}}</strong>
+		</div>
+		<div class="column right aligned">
+			<strong>
+			{{sessionContext.sessionUser.firstName}} / {{sessionContext.sessionUser.userId}} / {{sessionContext.sessionUser.roleId}}
+			</strong>
+		</div>
+	</section>
+	
+	<section id="pageBody" class="ui page grid">
 		<x-ng-view></x-ng-view>
 	</section>
 
-	<hr class="uk-margin-small-bottom"/>
-	
-	<footer id="footerBar" class="uk-container uk-container-center">
-		<div class="uk-grid">
-			<div class="uk-width-1-2">
-				&copy; 2015 Watch Your Sales by <a target="_blank" href="http://www.wybis.com">Wybis India Pvt. Ltd.</a>
-				&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a href="/terms">Terms</a>
-			</div>
-			<div class="uk-width-1-2">
-				<div class="uk-float-right">
-					<a href="console.html">Console</a>
-					&nbsp;&nbsp;
-					<a href="uikit.html">UI Bed</a>
-					&nbsp;&nbsp;
-					<a href="" x-ng-click="viewSource()">Source</a>
-					Version : <strong><small>0.0.1</small></strong>
-				</div>
-			</div>
+	<div class="ui page grid three column">
+		<div class="column left aligned">			
+	   		&copy; 2015, <a href="http://www.wybis.com"><i class="icon-external-link"></i> Wybis India Pvt. Ltd.</a>
 		</div>
-	</footer>
+		<div class="column center aligned">
+			<a href="console.html">Console</a>
+			&nbsp;&nbsp;
+			<a href="" x-ng-click="viewSource()">Source</a>
+			&nbsp;&nbsp;
+			<a href="ui-bed.html">UI Bed</a>
+		</div>
+		<div class="column right aligned">	
+			Version : <strong><small>0.0.1</small></strong>
+		</div>
+	</div>	
 
 <script type="text/javascript"
 	src="assets/is.min.js"></script>
@@ -134,7 +92,7 @@
 	src="assets/jquery.min.js"></script>
 
 <script type="text/javascript" 
-	src="assets/uikit/js/uikit.min.js"></script>
+	src="assets/semantic-ui/semantic.min.js"></script>
 
 <script type="text/javascript"
 	src="assets/angularjs/angular.js"></script>
@@ -153,20 +111,26 @@
 	src="assets/ngNotify/ng-notify.min.js"></script>
 
 <script type="text/javascript" src="modules/init.js"></script>
+<script type="text/javascript" src="modules/common.js"></script>
+<script type="text/javascript" src="modules/semantic-ui.js"></script>
 <script type="text/javascript" src="modules/wydNotify/wydNotifyByNgNotify.js"></script>
 
-<script type="text/javascript" src="modules/home/homeController.js"></script>
+<script type="text/javascript" src="modules/home/controller.js"></script>
+<script type="text/javascript" src="modules/counter/controller.js"></script>
+<script type="text/javascript" src="modules/transaction/controller.js"></script>
+<script type="text/javascript" src="modules/transfer/controller.js"></script>
+<script type="text/javascript" src="modules/stock/controller.js"></script>
+<script type="text/javascript" src="modules/product/controller.js"></script>
+<script type="text/javascript" src="modules/customer/controller.js"></script>
+<script type="text/javascript" src="modules/dealer/controller.js"></script>
+<script type="text/javascript" src="modules/employee/controller.js"></script>
+<script type="text/javascript" src="modules/store/controller.js"></script>
 
-<script type="text/javascript" src="modules/transfer/transferController.js"></script>
-<script type="text/javascript" src="modules/product/productController.js"></script>
-<script type="text/javascript" src="modules/customer/customerController.js"></script>
-<script type="text/javascript" src="modules/employee/employeeController.js"></script>
-
-<script type="text/javascript" src="modules/setting/settingController.js"></script>
+<script type="text/javascript" src="modules/setting/controller.js"></script>
 <script type="text/javascript" src="modules/session/signOutController.js"></script>
 
-<script type="text/javascript" src="modules/common.js"></script>
 <script type="text/javascript" src="modules/directives.js"></script>
+
 <script type="text/javascript" src="modules/home.js"></script>    
 
 </body>

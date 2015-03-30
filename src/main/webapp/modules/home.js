@@ -40,9 +40,27 @@ app.config(function($routeProvider, $locationProvider) {
 		reloadOnSearch : false
 	});
 
+	$routeProvider.when('/counter', {
+		templateUrl : 'modules/counter/d.html',
+		controller : 'counterController',
+		reloadOnSearch : false
+	});
+
+	$routeProvider.when('/transactions', {
+		templateUrl : 'modules/transaction/d.html',
+		controller : 'transactionController',
+		reloadOnSearch : false
+	});
+
 	$routeProvider.when('/transfer', {
 		templateUrl : 'modules/transfer/d.html',
 		controller : 'transferController',
+		reloadOnSearch : false
+	});
+
+	$routeProvider.when('/stocks', {
+		templateUrl : 'modules/stock/d.html',
+		controller : 'stockController',
 		reloadOnSearch : false
 	});
 
@@ -58,9 +76,21 @@ app.config(function($routeProvider, $locationProvider) {
 		reloadOnSearch : false
 	});
 
+	$routeProvider.when('/dealers', {
+		templateUrl : 'modules/dealer/d.html',
+		controller : 'dealerController',
+		reloadOnSearch : false
+	});
+
 	$routeProvider.when('/employees', {
 		templateUrl : 'modules/employee/d.html',
 		controller : 'employeeController',
+		reloadOnSearch : false
+	});
+
+	$routeProvider.when('/stores', {
+		templateUrl : 'modules/store/d.html',
+		controller : 'storeController',
 		reloadOnSearch : false
 	});
 
@@ -73,12 +103,6 @@ app.config(function($routeProvider, $locationProvider) {
 	$routeProvider.when('/signOut', {
 		templateUrl : 'modules/session/signOut-d.html',
 		controller : 'signOutController',
-		reloadOnSearch : false
-	});
-
-	$routeProvider.when('/theme', {
-		templateUrl : 'modules/theme/d.html',
-		controller : 'themeController',
 		reloadOnSearch : false
 	});
 

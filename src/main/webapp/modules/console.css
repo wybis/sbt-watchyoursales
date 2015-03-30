@@ -1,3 +1,7 @@
+#pageBody {
+	min-height: 580px;
+}
+
 #respMessage {
 	min-height: 400px;
 }

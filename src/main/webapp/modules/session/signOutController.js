@@ -1,4 +1,5 @@
 function signOutController($rootScope, $scope, $log, $http, $window) {
+	$log.debug('signOutController...');
 	$rootScope.viewName = 'SignOut';
 
 	var path = 'sessions/signOut';
@@ -9,7 +10,5 @@ function signOutController($rootScope, $scope, $log, $http, $window) {
 		deferred.reject("unable to logout...");
 		$window.location = 'index-d.html';
 	});
-
-	$log.debug('signOutController...');
 }
 appControllers.controller('signOutController', signOutController);

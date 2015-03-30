@@ -25,7 +25,7 @@ function homeController($rootScope, $scope, $log, $http, $filter, $timeout) {
 
 	$scope.branchJsonClazz = 'disabled';
 
-	$scope.onAgencyChange = function() {
+	$scope.onBranchChange = function() {
 		var branchJson = $scope.branchJson;
 		if (branchJson.id == '-') {
 			return;
@@ -34,7 +34,7 @@ function homeController($rootScope, $scope, $log, $http, $filter, $timeout) {
 
 		$scope.branchJsonClazz = 'active';
 
-		var path = '../modules/system/' + branchJson.id;
+		var path = 'modules/system/' + branchJson.id;
 		$http.get(path).success(function(response) {
 			$log.info(response);
 			branchJson.value = response;
@@ -51,7 +51,7 @@ function homeController($rootScope, $scope, $log, $http, $filter, $timeout) {
 		$scope.branchJsonClazz = 'active';
 		$timeout(function() {
 			var branchJson = $scope.branchJson;
-			var f = $http.post('../system/saveMaster', branchJson.json);
+			var f = $http.post('system/saveMaster', branchJson.json);
 			f.success(function(response) {
 				$scope.message = response;
 				$scope.branchJsonClazz = 'disabled';

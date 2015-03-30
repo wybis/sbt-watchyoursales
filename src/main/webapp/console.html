@@ -7,11 +7,7 @@
 
 	<title>Console</title>
 
-	<!-- 
-	<link rel="stylesheet" href="assets/uikit/css/uikit.min.css">
-	-->
-	<link rel="stylesheet" href="assets/uikit/css/uikit.almost-flat.min.css">
-
+	<link rel="stylesheet" href="assets/semantic-ui/semantic.min.css">
 	<link rel="stylesheet" href="assets/ngNotify/ng-notify.min.css">
 
 	<link rel="stylesheet" href="modules/base-d.css">
@@ -25,129 +21,81 @@
 </head>
 <body x-ng-clock>
 
-	<nav id="navBar" class="uk-navbar uk-navbar-attached">
-		<div class="uk-container uk-container-center">
-			<a class="uk-navbar-brand" href="console.html">Console</a>
-			
-			<ul class="uk-navbar-nav">
-			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='home']">
-			        <a href="#/home">
-			        	<i class="uk-icon-home"></i> Home
-			        </a>
-			    </li>
-			    <li>
-			        <a href="" x-ng-click="execute('../ping')">
-			        	Ping
-			        </a>
-			    </li>
-			    <li>
-			        <a href="" x-ng-click="execute('../info')">
-			        	Info
-			        </a>
-			    </li>
-			    <li>
-			        <a href="" x-ng-click="execute('../sessions/properties')">
-			        	Session Properties
-			        </a>
-			    </li>
-			    <li>
-			        <a href="" x-ng-click="execute('../system/reset')">
-			        	Reset
-			        </a>
-			    </li>
-			    <li>
-			        <a href="" x-ng-click="execute('../system/clear')">
-			        	Clear
-			        </a>
-			    </li>
-			    <li>
-			        <a href="" x-ng-click="execute('../system/clearTransactions')">
-			        	Clear Transactions
-			        </a>
-			    </li>
-			</ul>
-			<div class="uk-navbar-flip">
-				<ul class="uk-navbar-nav">				    
-				    <li>
-				        <a href="http://localhost:8082/">
-				        	<i class="uk-icon-database"></i> Database
-				        </a>
-				    </li>
-				    <li>
-				        <a href="index-d.html">
-				        	<i class="uk-icon-desktop"></i> Desktop
-				        </a>
-				    </li>
-				    <li>
-				        <a href="index-m.html">
-				        	<i class="uk-icon-mobile"></i> Mobile
-				        </a>
-				    </li>
-					<li>
-						<a href="#navMenu" class="uk-navbar-toggle" data-uk-offcanvas></a>
-					</li>
-				</ul>
-			</div>	
-		</div>
+<div class="ui left vertical sidebar menu" x-sui-sidebar>
+	<div class="ui secondary segment">
+    	<div class="item">
+      		<h1>Console</h1>
+    	</div>
+    	<a class="item" href="#/home">Home</a>
+    	<a class="item" href="#/systemInfo">System Info</a>
+    </div>
+</div>
+
+<div class="pusher">
+
+	<nav class="ui fixed red inverted menu navbar page grid">
+		<div class="ui left floated launch icon button">
+        	<i class="sidebar icon"></i>
+    	</div>
+		<a class="item" href="console.html">Console</a>
+		
+		<a class="item" x-ng-click="execute('/ping')">
+			Ping
+		</a>
+		<a class="item" x-ng-click="execute('/info')">
+			Info
+		</a>
+		<a class="item" x-ng-click="execute('/sessions/properties')">
+			Session Properties
+		</a>
+		<a class="item" x-ng-click="execute('/system/reset')">
+			Reset
+		</a>
+		<a class="item" x-ng-click="execute('/system/clear')">
+			Clear All
+		</a>
+		<a class="item" x-ng-click="execute('/system/clearTransactions')">
+			Clear Transactions
+		</a>
+		
+		<a href="http://localhost:8082/" target="_blank" class="right item">
+			Database
+		</a>
+		<a href="index-m.html" target="_blank" class="right item">
+			Tablet/Mobile
+		</a>
+		<a href="index-d.html" target="_blank" class="right item">
+			Destop/Tablet
+		</a>		
 	</nav>
- 
-	<section id="pageBody" class="uk-container uk-container-center uk-margin-top ">
+
+	<section id="pageBody" class="ui page grid">
 		<x-ng-view></x-ng-view>
-		
-		<br/><br/>
-		<div class="uk-grid">
-			<div class="uk-width-1-1">
-				<ul class="uk-tab" data-uk-tab="{connect:'#systemInfoTab'}">
-					<li class="uk-active"><a href="">Sessions</a></li>
-					<li><a href="">Metrics</a></li>
-					<li><a href="">Dump</a></li>
-					<li><a href="">Trace</a></li>
-					<li><a href="">Health</a></li>
-					<li><a href="">Info</a></li>
-				</ul>
-		
-				<div id="systemInfoTab" class="uk-switcher">
-					<div id="Sessions">
-						<br/>
-						<pre>sessions...</pre>
-					</div>
-					<div id="Metrics">
-						<br/>
-						<pre>metrics</pre>
-					</div>
-					<div id="Dump">
-						<br/>
-						<pre>dump</pre>
-					</div>
-					<div id="Trace">
-						<br/>
-						<pre>trace</pre>
-					</div>
-					<div id="Health">
-						<br/>
-						<pre>health</pre>
-					</div>
-					<div id="Info">
-						<br/>
-						<pre>info</pre>
-					</div>
-				</div>
-			</div>
-		</div>
-		
 	</section>
 
-	<div id="navMenu" class="uk-offcanvas">
-	    <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
-    		<div class="uk-panel">
-    			<h3 class="uk-panel-title">Console</h3>
-    		</div>
-   			<ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
-   				<li><a href="#/systemInfo">System Info</a></li>
-   			</ul>
-	    </div>
-	</div>
+	<div class="ui page grid three column">
 	
+		<div class="column left aligned">			
+	   		&copy; 2015, <a href="http://www.wybis.com"><i class="icon-external-link"></i> Wybis India Pvt. Ltd.</a>
+		</div>
+	
+		<div class="column center aligned">
+			<a href="index-d.html">Home</a>
+			&nbsp;&nbsp;
+			<a href="" x-ng-click="viewSource()">Source</a>
+			&nbsp;&nbsp;
+			<a href="ui-bed.html">UI Bed</a>
+		</div>
+			
+		<div class="column right aligned">	
+			Version : <strong><small>0.0.1</small></strong>
+		</div>
+	
+	</div>	
+	
+</div>
+
+
 <script type="text/javascript"
 	src="assets/is.min.js"></script>
 <script type="text/javascript"
@@ -158,7 +106,7 @@
 	src="assets/jquery.min.js"></script>
 
 <script type="text/javascript" 
-	src="assets/uikit/js/uikit.min.js"></script>
+	src="assets/semantic-ui/semantic.min.js"></script>
 
 <script type="text/javascript"
 	src="assets/angularjs/angular.js"></script>
@@ -174,6 +122,7 @@
 
 <script type="text/javascript" src="modules/init.js"></script>
 <script type="text/javascript" src="modules/common.js"></script>
+<script type="text/javascript" src="modules/semantic-ui.js"></script>
 <script type="text/javascript" src="modules/wydNotify/wydNotifyByNgNotify.js"></script>
 
 <script type="text/javascript" src="modules/console/home/controller.js"></script>

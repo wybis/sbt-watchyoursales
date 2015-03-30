@@ -1,38 +1,40 @@
-<div class="uk-grid uk-grid-divider">
-    <div class="uk-width-1-2">
-    	<div class="uk-panel uk-panel-header uk-panel-box uk-panel-box-primary">
-    		<h3 class="uk-panel-title">Create Branch Via JSON</h3>
-    		<form class="uk-form uk-form-stacked">
-	    		<div class="uk-form-row">
-		    		<div class="uk-form-controls">
-					    <select class="uk-width-1-1" 
-					    	x-ng-model="branchJson" 
-							x-ng-change="onAgencyChange()"
-							x-ng-options="item.name for item in branchsJson">
-			     		</select>
-			     	</div>
-		     	</div>	
-	    		<div class="uk-form-row">
-		    		<div class="uk-form-controls">
-						<textarea class="uk-width-1-1" id="branchJson"
-							x-ng-model="branchJson.json"></textarea>
-			     	</div>
-		     	</div>	
-	    		<div class="uk-form-row">
-		    		<div class="uk-form-controls">
-			    		<button class="uk-button uk-button-primary uk-align-center"
-			    			x-ng-click="saveMaster()">
-			    			Save
-			    		</button>
-			     	</div>
-		     	</div>	
-	     	</form>		
+<div class="ui divided two column grid">
+
+    <div class="left column">
+		<div class="ui teal raised segment">
+			<div class="ui inverted dimmer" x-ng-class="branchJsonClazz">
+    			<div class="ui loader"></div>
+  			</div>
+			<div class="ui green left ribbon label">Create Branch Via JSON</div>
+			<div class="ui form">
+		  		<div class="field">
+		    		<label>JSON File</label>
+				    <select class="ui dropdown" x-sui-select 
+				    	x-ng-model="branchJson" 
+						x-ng-change="onBranchChange()"
+						x-ng-options="item.name for item in branchsJson">
+	      			</select>	
+		  		</div>
+				<div class="field">
+		    		<textarea id="branchJson" x-ng-model="branchJson.json"></textarea>
+		  		</div>
+				<div class="field">
+		    		<button class="fluid ui primary button"
+		    			x-ng-click="saveMaster()">
+		    			Save
+		    		</button>
+		  		</div>
+			</div>
+		</div>
+    </div>
+    
+    <div class="right column">
+    	<div class="ui teal raised segment">
+    		<div class="ui teal right ribbon label">Response Message</div>
+	    	<div class="ui item">
+	    		<pre id="respMessage">{{message | json}}</pre>
+	    	</div>
     	</div>
     </div>
-    <div class="uk-width-1-2">
-    	<div class="uk-panel uk-panel-header uk-panel-box uk-panel-box-primary">
-    		<h3 class="uk-panel-title">Response Message</h3>
-    		<pre id="respMessage">{{message}}</pre>
-    	</div>
-    </div>
+    
 </div>

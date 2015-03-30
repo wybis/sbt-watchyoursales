@@ -5,15 +5,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-	<title>WYS UI Bed</title>
+	<title>UI Bed</title>
 
-	<link rel="stylesheet" href="assets/uikit/css/uikit.min.css">
-	<link rel="stylesheet" href="assets/uikit/css/uikit.almost-flat.min.css">
- 
+	<link rel="stylesheet" href="assets/semantic-ui/semantic.min.css">
 	<link rel="stylesheet" href="assets/ngNotify/ng-notify.min.css">
 
 	<link rel="stylesheet" href="modules/base-d.css">
-	<link rel="stylesheet" href="modules/uikit.css">
+	<link rel="stylesheet" href="modules/ui-bed.css">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -23,81 +21,105 @@
 </head>
 <body x-ng-clock>
 
-	<nav id="navBar" class="uk-navbar uk-navbar-attached">
-		<div class="uk-container uk-container-center">
-			<a class="uk-navbar-brand" href="uikit.html">WYS UI Bed</a>
-		</div>
+	<nav class="ui fixed red inverted menu navbar page grid">
+		<a class="item" href="ui-bed.html">UI Bed</a>
 	</nav>
-			
-	<section id="pageBody" class="uk-container uk-container-center">
-
-		<div class="uk-grid uk-margin-top">
-
-			<div class="uk-width-1-2">
-				<button class="uk-button uk-button-primary" x-ng-click="info()">Info Alert</button>
-				<button class="uk-button uk-button-success" x-ng-click="success()">Success Alert</button>
-				<button class="uk-button uk-button-warning" x-ng-click="warning()">Warning Alert</button>
-				<button class="uk-button uk-button-danger" x-ng-click="error()">Error Alert</button>
+	
+	<section id="pageBody" class="ui page grid">
+		<!-- 
+		<x-ng-view></x-ng-view>
+		-->
+		<div class="two column row">
+			<div class="column">
+				<div class="ui segment center aligned">
+					<button class="ui blue button" x-ng-click="info()">Info Alert</button>
+					<button class="ui green button" x-ng-click="success()">Success Alert</button>
+					<button class="ui orange button" x-ng-click="warning()">Warning Alert</button>
+					<button class="ui red button" x-ng-click="error()">Error Alert</button>
+				</div>
+				<div class="ui small form segment error">
+					<h4 class="ui dividing header">Sign In</h4>
+					<div class="ui error message">
+    					<div class="header">Action Forbidden</div>
+    					<p>You can only sign up for an account once with a given e-mail address.</p>
+ 					 </div>
+					<div class="field">
+    					<label>User Id</label>
+    					<div class="ui left icon corner labeled input">
+			        		<input type="text" placeholder="User Id">
+			        		<i class="user icon"></i>
+							<div class="ui corner label">
+								<i class="asterisk icon"></i>
+							</div>			        		 
+			        	</div>
+  					</div>
+					<div class="field">
+    					<label>Password</label>
+    					<div class="ui left icon corner labeled input">
+				  			<input type="password" placeholder="Password">
+			        		 <i class="user icon"></i>
+							<div class="ui corner label">
+								<i class="asterisk icon"></i>
+							</div>			        		 
+			        	</div>
+  					</div>
+					<a href="">Forget Password?</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button class="ui blue button">Sign In</button>
+				</div>
 			</div>
-			
-			<div class="uk-width-1-2">
-		    	<div class="uk-panel uk-panel-header uk-panel-box uk-panel-box-primary">
-		    		<h3 class="uk-panel-title">Sign In</h3>
-		    		<form class="uk-form uk-form-stacked">
-			    		<div class="uk-form-row">
-				    		<div class="uk-form-controls floating-label-wrapper">
-			    			<label class="uk-form-label" for="userId"><small>User Id</small></label>
-					        	<div class="uk-form-icon">
-					    			<i class="uk-icon-user"></i>
-						        	<input type="text" class="uk-form-width-large" placeholder="User Id"
-									  	x-ng-model="user.userId" x-wyd-floating-label>
-								</div>	  	
-					     	</div>
-				     	</div>	
-			    		<div class="uk-form-row">
-			    		    <label class="uk-form-label" for="password"><small>Password</small></label>
-				    		<div class="uk-form-controls">
-					        	<div class="uk-form-icon">
-					    			<i class="uk-icon-unlock"></i>
-						  			<input type="password" class="uk-form-width-large" placeholder="Password"
-						  				x-ng-model="user.password">
-						  		</div>		
-					     	</div>
-				     	</div>	
-				     	<hr/>
-			    		<div class="uk-form-row">
-				    		<div class="uk-form-controls">
-					    		<button class="uk-button uk-button-primary uk-align-center"
-					    			x-ng-click="saveMaster()">
-					    			Save
-					    		</button>
-					     	</div>
-				     	</div>	
-			     	</form>		
-		    	</div>
+			<div class="column">
+				<div class="ui top attached tabular menu" x-sui-tab>
+				    <a class="active item" data-tab="first">First</a>
+				    <a class="item" data-tab="second">Second</a>
+				    <a class="item" data-tab="third">Third</a>
+				</div>
+				<div class="ui bottom attached active tab segment" data-tab="first">
+				    First
+				</div>
+				<div class="ui bottom attached tab segment" data-tab="second">
+				    Second
+				</div>
+				<div class="ui bottom attached tab segment" data-tab="third">
+				    Third
+				</div>
 			</div>
-
 		</div>
 		
-		<div class="uk-grid">
-			<div class="uk-width-1-2">
-				<ul class="uk-tab" data-uk-tab="{connect:'#my-id'}">
-		    		<li class="uk-active"><a href="">a</a></li>
-		    		<li><a href="">B</a></li>
-		    		<li><a href="">C</a></li>
-				</ul>
-			</div>	
-		</div>
-		
-		<div id="my-id" class="uk-switcher">
-			<div id="a">A</div>
-			<div id="b">B</div>
-			<div id="c">C</div>
-		</div>
-
 	</section>
 
+	<div class="ui page grid three column">
 	
+		<div class="column left aligned">			
+	   		&copy; 2015, <a href="http://www.wybis.com"><i class="icon-external-link"></i> Wybis India Pvt. Ltd.</a>
+		</div>
+	
+		<div class="column center aligned">
+			<a href="index-d.html">Home</a>
+			&nbsp;&nbsp;
+			<a href="" x-ng-click="viewSource()">Source</a>
+			&nbsp;&nbsp;
+			<a href="console.html">Console</a>
+		</div>
+			
+		<div class="column right aligned">	
+			Version : <strong><small>0.0.1</small></strong>
+		</div>
+	
+	</div>
+			 
 <script type="text/javascript"
 	src="assets/is.min.js"></script>
 <script type="text/javascript"
@@ -108,9 +130,7 @@
 	src="assets/jquery.min.js"></script>
 
 <script type="text/javascript" 
-	src="assets/uikit/js/uikit.min.js"></script>
-<script type="text/javascript" 
-	src="assets/uikit/js/components/notify.js"></script>
+	src="assets/semantic-ui/semantic.min.js"></script>
 
 <script type="text/javascript"
 	src="assets/angularjs/angular.js"></script>
@@ -125,15 +145,16 @@
 	src="assets/ngNotify/ng-notify.min.js"></script>
 
 <script type="text/javascript" src="modules/init.js"></script>
+<script type="text/javascript" src="modules/common.js"></script>
+<script type="text/javascript" src="modules/semantic-ui.js"></script>
 <script type="text/javascript" src="modules/wydNotify/wydNotifyByNgNotify.js"></script>
 <!-- 
-<script type="text/javascript" src="modules/wydNotify/wydNotifyByUiKit.js"></script>
+<script type="text/javascript" src="modules/wydNotify/wydNotifyBySemanticUi.js"></script>
 -->
 
-<script type="text/javascript" src="modules/common.js"></script>
 <script type="text/javascript" src="modules/directives.js"></script>
 
-<script type="text/javascript" src="modules/uikit.js"></script>    
+<script type="text/javascript" src="modules/ui-bed.js"></script>    
 
 </body>
 </html>

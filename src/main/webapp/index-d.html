@@ -7,9 +7,7 @@
 
 	<title>Watch Your Sales</title>
 
-	<link rel="stylesheet" href="assets/uikit/css/uikit.min.css">
-	<link rel="stylesheet" href="assets/uikit/css/uikit.almost-flat.min.css">
-
+	<link rel="stylesheet" href="assets/semantic-ui/semantic.min.css">
 	<link rel="stylesheet" href="assets/ngNotify/ng-notify.min.css">
 
 	<link rel="stylesheet" href="modules/base-d.css">
@@ -23,63 +21,43 @@
 </head>
 <body x-ng-clock>
 
-	<nav id="navBar" class="uk-navbar uk-navbar-attached">
-		<div class="uk-container uk-container-center">
-			<a class="uk-navbar-brand" href="index-d.html">Watch Your Sales</a>
-			
-			<ul class="uk-navbar-nav">
-			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='home']">
-			        <a href="#/index" >
-			        	<i class="uk-icon-home"></i> Home
-			        </a>
-			    </li>
-			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='features']">
-			        <a href="#/features">Features</a>
-			    </li>
-			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='about']">
-			        <a href="#/about" >About</a>
-			    </li>
-			    <li x-ng-class="{true:'uk-active', false:''}[viewName=='contact']">
-			        <a href="#/contact">Contact</a>
-			    </li>
-			</ul>
-			<div class="uk-navbar-flip">
-				<ul class="uk-navbar-nav">				    
-				    <li x-ng-class="{true:'uk-active', false:''}[viewName=='signIn']">
-				        <a href="#/signIn">
-				        	<i class="uk-icon-sign-in"></i> Sign In
-				        </a>
-				    </li>
-				</ul>
-			</div>	
-		</div>
+	<nav class="ui fixed red inverted menu navbar page grid">
+		<a class="item" href="index-d.html">Watch Your Sales</a>
+		<a class="item" href="#/index">
+			<i class="home icon"></i> Home
+		</a>
+		<a class="item" href="#/features">Features</a>
+		<a class="item" href="#/about">About</a>
+		<a class="item" href="#/contact">Contact</a>
+		
+		<a class="right item" href="#/signIn">
+			<i class="sign out icon"></i> Sign In
+		</a>
 	</nav>
 			
-	<section id="pageBody" class="uk-container uk-container-center">
+	<section id="pageBody" class="ui page grid">
 		<x-ng-view></x-ng-view>
 	</section>
 
-	<hr class="uk-margin-small-bottom"/>
+	<div class="ui page grid three column">
 	
-	<footer id="footerBar" class="uk-container uk-container-center">
-		<div class="uk-grid">
-			<div class="uk-width-1-2">
-				&copy; 2015 Watch Your Sales by <a target="_blank" href="http://www.wybis.com">Wybis India Pvt. Ltd.</a>
-				&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a href="/terms">Terms</a>
-			</div>
-			<div class="uk-width-1-2">
-				<div class="uk-float-right">
-					<a href="console.html">Console</a>
-					&nbsp;&nbsp;
-					<a href="uikit.html">UI Bed</a>
-					&nbsp;&nbsp;
-					<a href="" x-ng-click="viewSource()">Source</a>
-					Version : <strong><small>0.0.1</small></strong>
-				</div>
-			</div>
+		<div class="column left aligned">			
+	   		&copy; 2015, <a href="http://www.wybis.com"><i class="icon-external-link"></i> Wybis India Pvt. Ltd.</a>
 		</div>
-	</footer>
+	
+		<div class="column center aligned">
+			<a href="console.html">Console</a>
+			&nbsp;&nbsp;
+			<a href="" x-ng-click="viewSource()">Source</a>
+			&nbsp;&nbsp;
+			<a href="ui-bed.html">UI Bed</a>
+		</div>
+			
+		<div class="column right aligned">	
+			Version : <strong><small>0.0.1</small></strong>
+		</div>
+	
+	</div>	
 	
 <script type="text/javascript"
 	src="assets/is.min.js"></script>
@@ -91,7 +69,7 @@
 	src="assets/jquery.min.js"></script>
 
 <script type="text/javascript" 
-	src="assets/uikit/js/uikit.min.js"></script>
+	src="assets/semantic-ui/semantic.min.js"></script>
 
 <script type="text/javascript"
 	src="assets/angularjs/angular.js"></script>
@@ -106,12 +84,13 @@
 	src="assets/ngNotify/ng-notify.min.js"></script>
 
 <script type="text/javascript" src="modules/init.js"></script>
+<script type="text/javascript" src="modules/common.js"></script>
+<script type="text/javascript" src="modules/semantic-ui.js"></script>
 <script type="text/javascript" src="modules/wydNotify/wydNotifyByNgNotify.js"></script>
 
-<script type="text/javascript" src="modules/index/indexController.js"></script>
+<script type="text/javascript" src="modules/index/controller.js"></script>
 <script type="text/javascript" src="modules/session/signInController.js"></script>
 
-<script type="text/javascript" src="modules/common.js"></script>
 <script type="text/javascript" src="modules/directives.js"></script>
 
 <script type="text/javascript" src="modules/index.js"></script>    

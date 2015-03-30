@@ -11,8 +11,12 @@ function signInController($rootScope, $scope, $log, wydNotifyService, $http,
 
 	function signIn() {
 		wydNotifyService.removeAll();
-		$log.info('singing in...');
+		$scope.signInClazz = 'active';
 		$scope.message = '';
+
+		$timeout(function() {
+			$log.info('signin wait...');
+		}, 3000);
 
 		var path = 'sessions/signIn';
 		$http.post(path, $scope.user).success(function(response) {
@@ -25,8 +29,10 @@ function signInController($rootScope, $scope, $log, wydNotifyService, $http,
 				$window.location = 'home-d.html';
 			}
 			$log.info(response);
+			$scope.signInClazz = '';
 		}).error(function(error) {
 			$log.debug("unable to login...");
+			$scope.signInClazz = '';
 		});
 	}
 	$scope.signIn = signIn;
