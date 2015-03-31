@@ -55,7 +55,7 @@ function appInit($log, $rootScope, $location, $sessionStorage) {
 		// $log.info('Location : ', $location.path());
 		var curLocPath = $location.path();
 		// $log.info('After Current Location : ', curLocPath);
-		$('#leftSideBar').sidebar('hide');
+		$('#rightSideBar').sidebar('hide');
 	});
 
 	$log.info('Initialization finished...');

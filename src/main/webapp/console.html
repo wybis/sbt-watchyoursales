@@ -21,7 +21,7 @@
 </head>
 <body x-ng-clock>
 
-<div id="leftSideBar" class="ui left vertical sidebar menu" x-sui-sidebar>
+<div id="rightSideBar" class="ui right vertical sidebar menu" x-sui-sidebar>
 	<div class="ui secondary segment">
     	<div class="item">
       		<h1>Console</h1>
@@ -44,30 +44,14 @@
 <div class="pusher">
 
 	<nav class="ui fixed red inverted menu navbar page grid">
-		<div class="ui left floated launch icon button">
+		<div class="ui right floated launch icon red button">
         	<i class="sidebar icon"></i>
     	</div>
+    	
 		<a class="item" href="console.html">Console</a>
+		
 		<a class="item" href="#/home">
 			<i class="home icon"></i> Home
-		</a>
-		<a class="item" x-ng-click="execute('/ping')">
-			Ping
-		</a>
-		<a class="item" x-ng-click="execute('/info')">
-			Info
-		</a>
-		<a class="item" x-ng-click="execute('/sessions/properties')">
-			Session Properties
-		</a>
-		<a class="item" x-ng-click="execute('/system/reset')">
-			Reset
-		</a>
-		<a class="item" x-ng-click="execute('/system/clear')">
-			Clear All
-		</a>
-		<a class="item" x-ng-click="execute('/system/clearTransactions')">
-			Clear Transactions
 		</a>
 		
 		<a href="http://localhost:8082/" target="_blank" class="right item">
@@ -106,7 +90,6 @@
 	</div>	
 	
 </div>
-
 
 <script type="text/javascript"
 	src="assets/is.min.js"></script>

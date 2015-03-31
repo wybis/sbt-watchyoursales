@@ -63,4 +63,3 @@ function homeController($rootScope, $scope, $log, $http, $filter, $timeout) {
 	};
 }
 appControllers.controller('homeController', homeController);
-F
