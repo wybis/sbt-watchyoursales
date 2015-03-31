@@ -28,9 +28,9 @@ app.config(function($routeProvider, $locationProvider) {
 		controller : 'homeController'
 	});
 
-	$routeProvider.when('/systemInfo', {
-		templateUrl : 'modules/console/systemInfo/d.html',
-		controller : 'systemInfoController'
+	$routeProvider.when('/system/:pathId', {
+		templateUrl : 'modules/console/system/d.html',
+		controller : 'systemController'
 	});
 
 	$routeProvider.when('/notFound', {
@@ -44,6 +44,19 @@ app.config(function($routeProvider, $locationProvider) {
 
 function appInit($log, $rootScope, $location, $sessionStorage) {
 	$log.info('Initialization started...');
+
+	$rootScope.$on("$routeChangeStart", function(event, next, current) {
+		// $log.info('Location : ', $location.path());
+		var curLocPath = $location.path();
+		// $log.info('Before Current Location : ', curLocPath);
+	});
+
+	$rootScope.$on("$routeChangeSuccess", function(event, next, current) {
+		// $log.info('Location : ', $location.path());
+		var curLocPath = $location.path();
+		// $log.info('After Current Location : ', curLocPath);
+		$('#leftSideBar').sidebar('hide');
+	});
 
 	$log.info('Initialization finished...');
 }

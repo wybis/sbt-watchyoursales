@@ -1,4 +1,5 @@
 function homeController($rootScope, $scope, $log, $http, $filter, $timeout) {
+	$log.debug('homeController...');
 	$rootScope.viewName = 'Home';
 
 	$scope.message = '';
@@ -60,7 +61,6 @@ function homeController($rootScope, $scope, $log, $http, $filter, $timeout) {
 			});
 		}, 5000);
 	};
-
-	$log.debug('homeController...');
 }
 appControllers.controller('homeController', homeController);
+F

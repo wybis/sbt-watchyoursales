@@ -21,13 +21,23 @@
 </head>
 <body x-ng-clock>
 
-<div class="ui left vertical sidebar menu" x-sui-sidebar>
+<div id="leftSideBar" class="ui left vertical sidebar menu" x-sui-sidebar>
 	<div class="ui secondary segment">
     	<div class="item">
       		<h1>Console</h1>
     	</div>
     	<a class="item" href="#/home">Home</a>
-    	<a class="item" href="#/systemInfo">System Info</a>
+    	<div class="item">
+      		<b>System</b>
+      		<div class="menu">
+    			<a class="item" href="#/system/info">Info</a>
+    			<a class="item" href="#/system/health">Health</a>
+    			<a class="item" href="#/system/metrics">Metrics</a>
+    			<a class="item" href="#/system/dump">Dump</a>
+    			<a class="item" href="#/system/trace">Trace</a>
+    			<a class="item" href="#/system/sessions">Sessions</a>
+    		</div>
+    	</div>	
     </div>
 </div>
 
@@ -38,7 +48,9 @@
         	<i class="sidebar icon"></i>
     	</div>
 		<a class="item" href="console.html">Console</a>
-		
+		<a class="item" href="#/home">
+			<i class="home icon"></i> Home
+		</a>
 		<a class="item" x-ng-click="execute('/ping')">
 			Ping
 		</a>
@@ -126,7 +138,7 @@
 <script type="text/javascript" src="modules/wydNotify/wydNotifyByNgNotify.js"></script>
 
 <script type="text/javascript" src="modules/console/home/controller.js"></script>
-<script type="text/javascript" src="modules/console/systemInfo/controller.js"></script>
+<script type="text/javascript" src="modules/console/system/controller.js"></script>
 
 <script type="text/javascript" src="modules/directives.js"></script>
 
