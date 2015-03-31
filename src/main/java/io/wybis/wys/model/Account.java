@@ -1,4 +1,4 @@
-package io.wybis.bookshelf.model;
+package io.wybis.wys.model;
 
 import java.util.Date;
 
@@ -14,7 +14,7 @@ import lombok.Data;
 import com.google.common.base.Strings;
 
 @Entity
-@Table(name = "ACCOUNTS")
+@Table(name = "accounts")
 @Data
 public class Account extends AbstractModel {
 

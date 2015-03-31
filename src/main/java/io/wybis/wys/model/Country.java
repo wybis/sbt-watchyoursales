@@ -1,44 +1,35 @@
-package io.wybis.bookshelf.model;
+package io.wybis.wys.model;
 
 import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import lombok.Data;
-import lombok.ToString;
 
 @Entity
-@Table(name = "BLOB_DATA")
+@Table(name = "country")
 @Data
-@ToString(exclude = "content")
-public class BlobData extends AbstractModel {
+public class Country extends AbstractModel {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final String ID_KEY = "blobDataId";
-
 	@Id
-	@Column(name = "id")
-	private long id;
+	@Column(name = "code")
+	private String id;
+
+	@Column(name = "code3")
+	private String threeLetterCode;
+
+	@Column(name = "nbr")
+	private int numericCode;
 
 	@Column(name = "name")
 	private String name;
-
-	@Column(name = "type")
-	private String type;
-
-	@Column(name = "content")
-	@Lob
-	@Basic(fetch = FetchType.LAZY)
-	private byte[] content;
 
 	// common fields
 	@Column(name = "create_time")
@@ -48,10 +39,10 @@ public class BlobData extends AbstractModel {
 	protected Date updateTime;
 
 	@Column(name = "create_by")
-	protected long createBy;
+	protected String createBy;
 
 	@Column(name = "update_by")
-	protected long updateBy;
+	protected String updateBy;
 
 	// persistence operations
 	@PreUpdate

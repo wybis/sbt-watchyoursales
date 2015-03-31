@@ -1,6 +1,7 @@
-package io.wybis.bookshelf.model;
+package io.wybis.wys.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,61 +13,33 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "TRAN")
+@Table(name = "order_receipt")
 @Data
-public class Tran {
+public class OrderReceipt extends AbstractModel {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final String ID_KEY = "tranId";
+	public static final String ID_KEY = "orderReceiptId";
 
 	@Id
 	@Column(name = "id")
 	private long id;
 
-	@Column(name = "receipt_id")
-	private long receiptId;
-
-	private transient TranReceipt tranReceipt;
-
 	@Column(name = "category")
 	private String category;
-
-	@Column(name = "product_code")
-	private String productCode;
-
-	@Column(name = "account_id")
-	private long accountId;
-
-	private transient Account account;
-
-	@Column(name = "type")
-	private String type;
-
-	private transient long baseUnit;
-
-	@Column(name = "unit")
-	private long unit;
-
-	@Column(name = "rate")
-	private double rate;
-
-	private transient double amount;
 
 	@Column(name = "date")
 	private Date date;
 
-	private transient double averageRate;
+	private transient double totalAmount;
 
-	private transient double balanceUnit;
+	private transient double totalSaleAmount;
+
+	@Column(name = "description")
+	private String description;
 
 	@Column(name = "status")
 	private String status;
-
-	@Column(name = "order_id")
-	private long orderId;
-
-	private transient Order order;
 
 	@Column(name = "customer_id")
 	private long customerId;
@@ -74,7 +47,7 @@ public class Tran {
 	private transient User customer;
 
 	@Column(name = "employee_id")
-	long employeeId;
+	private long employeeId;
 
 	private transient User employee;
 
@@ -82,6 +55,8 @@ public class Tran {
 	private long branchId;
 
 	private transient Branch branch;
+
+	private transient List<Order> orders;
 
 	// common fields
 	@Column(name = "create_time")
@@ -97,7 +72,6 @@ public class Tran {
 	protected long updateBy;
 
 	// persistence operations
-
 	@PreUpdate
 	public void preUpdate() {
 		this.updateTime = new Date();
@@ -111,14 +85,4 @@ public class Tran {
 	}
 
 	// domain operations
-
-	public void computeAmount() {
-		if (this.rate == this.balanceUnit) {
-			this.amount = this.unit;
-		} else {
-			double value = (this.rate / this.baseUnit);
-			value = this.unit * value;
-			this.amount = value;
-		}
-	}
 }

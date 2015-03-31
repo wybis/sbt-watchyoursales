@@ -1,4 +1,4 @@
-package io.wybis.bookshelf.model;
+package io.wybis.wys.model;
 
 import java.util.Date;
 
@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "STOCK")
+@Table(name = "stock")
 @Data
 public class Stock extends AbstractModel {
 

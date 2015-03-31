@@ -1,4 +1,4 @@
-package io.wybis.bookshelf.model;
+package io.wybis.wys.model;
 
 import java.util.Date;
 
@@ -10,34 +10,46 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import lombok.Data;
-import lombok.experimental.Builder;
 
 @Entity
-@Table(name = "AUTO_NUMBER")
+@Table(name = "address")
 @Data
-@Builder
-public class AutoNumber extends AbstractModel {
+public class Address extends AbstractModel {
 
 	private static final long serialVersionUID = 1L;
 
+	public static final String ID_KEY = "addressId";
+
 	@Id
 	@Column(name = "id")
-	private String id;
+	private long id;
 
-	@Column(name = "val", nullable = false)
-	private long value;
+	@Column(name = "address")
+	private String address;
+
+	@Column(name = "city_or_town")
+	private String cityOrTown;
+
+	@Column(name = "postal_code")
+	private String postalCode;
+
+	@Column(name = "state_code")
+	private String stateCode;
+
+	@Column(name = "country_code")
+	private String countryCode;
 
 	// common fields
-	@Column(name = "create_time", nullable = false)
+	@Column(name = "create_time")
 	protected Date createTime;
 
-	@Column(name = "update_time", nullable = false)
+	@Column(name = "update_time")
 	protected Date updateTime;
 
-	@Column(name = "create_by", nullable = false)
+	@Column(name = "create_by")
 	protected long createBy;
 
-	@Column(name = "update_by", nullable = false)
+	@Column(name = "update_by")
 	protected long updateBy;
 
 	// persistence operations

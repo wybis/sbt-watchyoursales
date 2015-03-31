@@ -1,7 +1,6 @@
-package io.wybis.bookshelf.model;
+package io.wybis.wys.model;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,10 +11,8 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-import com.google.common.collect.Lists;
-
 @Entity
-@Table(name = "ROLE")
+@Table(name = "role")
 @Data
 public class Role extends AbstractModel {
 

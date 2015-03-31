@@ -1,6 +1,7 @@
-package io.wybis.bookshelf.model;
+package io.wybis.wys.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,51 +13,30 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "ORDER")
+@Table(name = "tran_receipt")
 @Data
-public class Order extends AbstractModel {
+public class TranReceipt {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final String ID_KEY = "orderId";
+	public static final String ID_KEY = "tranReceiptId";
 
 	@Id
 	@Column(name = "id")
 	private long id;
 
-	@Column(name = "receipt_id")
-	private long receiptId;
-
-	private transient OrderReceipt orderReceipt;
-
 	@Column(name = "category")
 	private String category;
-
-	@Column(name = "product_code")
-	private String productCode;
-
-	@Column(name = "account_id")
-	private long accountId;
-
-	private Account account;
-
-	@Column(name = "type")
-	private String type;
-
-	private transient long baseUnit;
-
-	@Column(name = "unit")
-	private double unit;
-
-	@Column(name = "rate")
-	private double rate;
-
-	private transient double amount;
 
 	@Column(name = "date")
 	private Date date;
 
-	private transient double averageRate;
+	private transient double totalAmount;
+
+	private transient double totalSaleAmount;
+
+	@Column(name = "description")
+	private String description;
 
 	@Column(name = "status")
 	private String status;
@@ -67,14 +47,16 @@ public class Order extends AbstractModel {
 	private transient User customer;
 
 	@Column(name = "employee_id")
-	private long employeeId;
+	long employeeId;
 
 	private transient User employee;
 
 	@Column(name = "branch_id")
-	private long branchId;
+	long branchId;
 
 	private transient Branch branch;
+
+	private transient List<Tran> trans;
 
 	// common fields
 	@Column(name = "create_time")

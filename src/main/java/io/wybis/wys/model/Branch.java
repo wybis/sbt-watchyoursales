@@ -1,4 +1,4 @@
-package io.wybis.bookshelf.model;
+package io.wybis.wys.model;
 
 import java.util.Date;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "BRANCH")
+@Table(name = "branch")
 @Data
 public class Branch extends AbstractModel {
 
@@ -57,13 +57,13 @@ public class Branch extends AbstractModel {
 	@Column(name = "parent_id")
 	private long parentId;
 
-	private List<Product> products;
+	private transient List<Product> products;
 
-	private List<User> employees;
+	private transient List<User> employees;
 
-	private List<User> dealers;
+	private transient List<User> dealers;
 
-	private List<User> customers;
+	private transient List<User> customers;
 
 	// common fields
 	@Column(name = "create_time")
