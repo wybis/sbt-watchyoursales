@@ -5,7 +5,8 @@ import io.wybis.wys.dto.UserDto;
 import io.wybis.wys.service.SessionService;
 import io.wybis.wys.service.exceptions.InvalidCredentialException;
 
-import javax.annotation.PostConstruct;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -27,8 +28,22 @@ public class SessionServiceController extends AbstractController {
 	@Resource
 	SessionService sessionService;
 
-	@PostConstruct
-	public void init() {
+	@RequestMapping(value = "/properties", method = RequestMethod.GET)
+	public @ResponseBody ResponseDto properties(HttpSession session) {
+		ResponseDto responseDto = new ResponseDto();
+
+		try {
+			Map<String, Object> props = sessionService.properties(session);
+			responseDto.setData(props);
+			responseDto.setType(ResponseDto.SUCCESS);
+
+		} catch (Throwable t) {
+			String s = "Unable to retrive session properties...";
+			responseDto.setType(ResponseDto.ERROR);
+			responseDto.setMessage(s);
+		}
+
+		return responseDto;
 	}
 
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST)

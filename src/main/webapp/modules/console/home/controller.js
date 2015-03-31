@@ -6,7 +6,7 @@ function homeController($rootScope, $scope, $log, $http, $filter, $timeout) {
 
 	$scope.execute = function(path) {
 		$http.get(path).success(function(response) {
-			$log.info(response);
+			//$log.info(response);
 			$scope.message = response;
 		})
 	};

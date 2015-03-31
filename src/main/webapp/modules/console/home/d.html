@@ -1,11 +1,16 @@
-<div class="ui divided two column grid">
+<div class="ui one column grid">
+	<div class="column center aligned">
+	<button class="mini ui green button" x-ng-click="execute('/ping')">Ping</button>
+	<button class="mini ui green button" x-ng-click="execute('/sessions/properties')">Session Properties</button>
 
+	<button class="mini ui teal button" x-ng-click="execute('/console/reset')">Reset</button>
+	<button class="mini ui teal button" x-ng-click="execute('/console/clear')">Clear All</button>
+	<button class="mini ui teal button" x-ng-click="execute('/console/clearTransactions')">Clear Transactions</button>
+	</div>
+</div>
+
+<div class="ui divided two column grid">
     <div class="left column">
-    	<div class="ui item">
-    		<button class="mini ui green button" x-ng-click="execute('/ping')">Ping</button>
-    		<button class="mini ui green button" x-ng-click="execute('/info')">Application Info</button>
-    		<button class="mini ui green button" x-ng-click="execute('/sessions/properties')">Session Properties</button>
-    	</div>
 		<div class="ui green raised segment">
 			<div class="ui inverted dimmer" x-ng-class="branchJsonClazz">
     			<div class="ui loader"></div>
@@ -34,11 +39,6 @@
     </div>
     
     <div class="right column">
-    	<div class="ui item">
-    		<button class="mini ui teal button" x-ng-click="execute('/system/reset')">Reset</button>
-    		<button class="mini ui teal button" x-ng-click="execute('/system/clear')">Clear All</button>
-    		<button class="mini ui teal button" x-ng-click="execute('/system/clearTransactions')">Clear Transactions</button>
-    	</div>
     	<div class="ui teal raised segment">
     		<div class="ui teal right ribbon label">Response Message</div>
 	    	<div class="ui item">
@@ -46,5 +46,4 @@
 	    	</div>
     	</div>
     </div>
-    
 </div>
