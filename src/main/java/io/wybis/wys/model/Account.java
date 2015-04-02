@@ -11,8 +11,6 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-import com.google.common.base.Strings;
-
 @Entity
 @Table(name = "accounts")
 @Data
@@ -44,11 +42,36 @@ public class Account extends AbstractModel {
 	@Column(name = "status")
 	private String status;
 
-	@Column(name = "stock_id", nullable = true)
-	private long stockId;
+	@Column(name = "hand_stock")
+	private double handStock;
 
+	@Column(name = "hand_stock_move_teller")
+	private double handStockMoveTeller;
+
+	@Column(name = "hand_stock_move_branch")
+	private double handStockMoveBranch;
+
+	private transient double handStockTotal;
+
+	@Column(name = "virtual_stock_buy")
+	private double virtualStockBuy;
+
+	@Column(name = "virtual_stock_sell")
+	private double virtualStockSell;
+
+	@Column(name = "availableStock")
+	private double availableStock;
+
+	@Column(name = "productId", nullable = true)
+	private long productId;
+
+	private transient Product product;
+
+	// @Column(name = "stock_id", nullable = true)
+	// private long stockId;
+	//
 	// @OneToOne(mappedBy = "stock")
-	private transient Stock stock;
+	// private transient Stock stock;
 
 	@Column(name = "user_id")
 	private String userId;
@@ -104,5 +127,49 @@ public class Account extends AbstractModel {
 
 	public void deposit(double amount) {
 		this.balance += amount;
+	}
+	
+	public boolean hasSufficientHandStock(double amount) {
+		return amount <= this.handStock;
+	}
+
+	public void withdrawHandStock(double amount) {
+		this.handStock -= amount;
+	}
+
+	public void depositHandStock(double amount) {
+		this.handStock += amount;
+	}
+
+	public double getVirtualStock() {
+		return this.virtualStockBuy - this.virtualStockSell;
+	}
+
+	public boolean hasSufficientVirtualStockBuy(double amount) {
+		return amount <= this.virtualStockBuy;
+	}
+
+	public boolean hasSufficientVirtualStockSell(double amount) {
+		return amount <= this.virtualStockSell;
+	}
+
+	public void withdrawVirtualStockBuy(double amount) {
+		this.virtualStockBuy -= amount;
+	}
+
+	public void depositVirtualStockBuy(double amount) {
+		this.virtualStockBuy += amount;
+	}
+
+	public void withdrawVirtualStockSell(double amount) {
+		this.virtualStockSell -= amount;
+	}
+
+	public void depositVirtualStockSell(double amount) {
+		this.virtualStockSell += amount;
+	}
+
+	public void computeAvailableStock() {
+		this.availableStock = this.getVirtualStock() + this.getHandStockTotal();
 	}
 }

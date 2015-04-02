@@ -48,17 +48,20 @@ public class Tran {
 	@Column(name = "unit")
 	private long unit;
 
+	private transient double balanceUnit;
+
 	@Column(name = "rate")
 	private double rate;
 
-	private transient double amount;
+	private transient double averageRate;
+
+	@Column(name = "amount")
+	private double amount;
+
+	private transient double balanceAmount;
 
 	@Column(name = "date")
 	private Date date;
-
-	private transient double averageRate;
-
-	private transient double balanceUnit;
 
 	@Column(name = "status")
 	private String status;

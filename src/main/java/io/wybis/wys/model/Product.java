@@ -133,7 +133,7 @@ public class Product extends AbstractModel {
 		return rate >= spr;
 	}
 
-	public void computeHandStockAverage(Stock stock, double unit, double rate) {
+	public void computeHandStockAverage(Account stock, double unit, double rate) {
 		// System.out.println("unit = " + unit);
 		// System.out.println("rate = " + rate);
 		// System.out.println("hStockTotal = " + stock.getHandStockTotal());
@@ -151,7 +151,7 @@ public class Product extends AbstractModel {
 		this.handStockAverage = value5;
 	}
 
-	public void revertHandStockAverage(Stock stock, double unit, double rate) {
+	public void revertHandStockAverage(Account stock, double unit, double rate) {
 		double hs = stock.getHandStockTotal() - unit;
 		if (hs > 0) {
 			// System.out.println("unit = " + unit);
@@ -172,7 +172,8 @@ public class Product extends AbstractModel {
 		}
 	}
 
-	public void computeVirtualStockAverage(Stock stock, double unit, double rate) {
+	public void computeVirtualStockAverage(Account stock, double unit,
+			double rate) {
 		// System.out.println("unit = " + unit);
 		// System.out.println("rate = " + rate);
 		// System.out.println("vStockBuy = stock.getVirtualStockBuy());
@@ -190,7 +191,8 @@ public class Product extends AbstractModel {
 		this.virtualStockAverage = value5;
 	}
 
-	public void revertVirtualStockAverage(Stock stock, double unit, double rate) {
+	public void revertVirtualStockAverage(Account stock, double unit,
+			double rate) {
 		double vsb = stock.getVirtualStockBuy() - unit;
 		if (vsb != 0) {
 			// System.out.println("unit = " + unit);
@@ -211,7 +213,7 @@ public class Product extends AbstractModel {
 		}
 	}
 
-	public void computeAvailableStockAverage(Stock stock, double sellRate) {
+	public void computeAvailableStockAverage(Account stock, double sellRate) {
 		double value1 = stock.getVirtualStockBuy()
 				* (this.virtualStockAverage / this.baseUnit);
 		// System.out.println("value1 = " + value1);

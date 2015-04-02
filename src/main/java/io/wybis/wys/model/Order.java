@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Data
 public class Order extends AbstractModel {
 
@@ -51,7 +51,8 @@ public class Order extends AbstractModel {
 	@Column(name = "rate")
 	private double rate;
 
-	private transient double amount;
+	@Column(name = "amount")
+	private double amount;
 
 	@Column(name = "date")
 	private Date date;

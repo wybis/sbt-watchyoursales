@@ -6,11 +6,9 @@ import io.wybis.wys.constants.ProductType
 import io.wybis.wys.constants.UserType
 import io.wybis.wys.model.Account
 import io.wybis.wys.model.Product
-import io.wybis.wys.model.Stock
 import io.wybis.wys.model.User
 import io.wybis.wys.repository.AccountRepository
 import io.wybis.wys.repository.ProductRepository
-import io.wybis.wys.repository.StockRepository
 import io.wybis.wys.repository.UserRepository
 import io.wybis.wys.service.AccountService
 import io.wybis.wys.service.exceptions.ModelAlreadyExistException
@@ -23,9 +21,6 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Slf4j
 public class DefaultAccountService extends AbstractService implements AccountService {
-
-	@Resource
-	StockRepository stockRepository;
 
 	@Resource
 	AccountRepository accountRepository;
@@ -47,18 +42,6 @@ public class DefaultAccountService extends AbstractService implements AccountSer
 		Account m = this.accountRepository.save(model);
 		model.createTime = m.createTime
 		model.updateTime = m.updateTime
-
-		if(model.stock) {
-			Stock stock = model.stock
-			stock.with {
-				userId = model.userId
-				branchId = model.branchId
-			}
-			stock.id = this.autoNumberService.nextNumber(sessionUser, Stock.ID_KEY)
-			Stock s = this.stockRepository.save(stock)
-			stock.createTime = s.createTime
-			stock.updateTime = s.updateTime
-		}
 	}
 
 	@Override
@@ -66,12 +49,10 @@ public class DefaultAccountService extends AbstractService implements AccountSer
 		List<User> users = this.userRepository.findByTypeAndBranchId(UserType.EMPLOYEE, product.branchId);
 
 		users.each { user ->
-			Stock stock = new Stock();
-			stock.with { productId = product.id }
 			Account account = new Account()
 			account.with {
 				type = product.type
-				stock = stock
+				productId = product.id
 				userId = user.id
 				branchId = product.branchId
 			}
@@ -84,12 +65,10 @@ public class DefaultAccountService extends AbstractService implements AccountSer
 		List<Product> products = this.productRepository.findByTypeAndBranchId(ProductType.CASH_EMPLOYEE, employee.branchId);
 
 		products.each { product ->
-			Stock stock = new Stock();
-			stock.with { productId = product.id }
 			Account account = new Account()
-			account.stock = stock;
 			account.with {
 				type = product.type
+				productId = product.id
 				userId = employee.id
 				branchId = employee.branchId
 			}
@@ -100,34 +79,30 @@ public class DefaultAccountService extends AbstractService implements AccountSer
 			this.userRepository.save(employee)
 		}
 
-		//		products = this.productRepository.findByTypeAndBranchId(ProductType.PROFIT_EMPLOYEE, employee.branchId);
-		//
-		//		products.each { product ->
-		//			Stock stock = new Stock();
-		//			stock.with { productId = product.id }
-		//			Account account = new Account()
-		//			account.stock = stock;
-		//			account.with {
-		//				type = product.type
-		//				userId = employee.id
-		//				branchId = employee.branchId
-		//			}
-		//			this.add(sessionUser, account)
-		//
-		//			employee.profitAccount = account;
-		//			employee.profitAccountId = account.id
-		//			this.userRepository.save(employee)
-		//		}
+		products = this.productRepository.findByTypeAndBranchId(ProductType.PROFIT_EMPLOYEE, employee.branchId);
+
+		products.each { product ->
+			Account account = new Account()
+			account.with {
+				type = product.type
+				productId = product.id
+				userId = employee.id
+				branchId = employee.branchId
+			}
+			this.add(sessionUser, account)
+
+			employee.profitAccount = account;
+			employee.profitAccountId = account.id
+			this.userRepository.save(employee)
+		}
 
 		products = this.productRepository.findByTypeAndBranchId(ProductType.PRODUCT, employee.branchId);
 
 		products.each { product ->
-			Stock stock = new Stock();
-			stock.with { productId = product.id }
 			Account account = new Account()
-			account.stock = stock;
 			account.with {
 				type = product.type
+				productId = product.id
 				userId = employee.id
 				branchId = employee.branchId
 			}
