@@ -47,7 +47,7 @@ public class SessionServiceController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
-	public @ResponseBody ResponseDto login(final HttpSession session,
+	public @ResponseBody ResponseDto login(HttpSession session,
 			@RequestBody final UserDto userDto) {
 		ResponseDto responseDto = new ResponseDto();
 

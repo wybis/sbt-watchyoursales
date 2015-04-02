@@ -39,13 +39,13 @@ public class DefaultSessionService extends AbstractService implements
 		if (!userId.equals("vteial@watchyoursales")) {
 			throw new InvalidCredentialException();
 		}
-		session.setAttribute("user", userDto);
+		session.setAttribute(SESSION_USER_KEY, userDto);
 	}
 
 	@Override
 	public void logout(HttpSession session) {
 
-		session.removeAttribute("user");
+		session.removeAttribute(SESSION_USER_KEY);
 
 	}
 }

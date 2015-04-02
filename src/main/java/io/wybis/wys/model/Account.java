@@ -36,7 +36,7 @@ public class Account extends AbstractModel {
 	private String type;
 
 	@Column(name = "is_minus")
-	private String isMinus;
+	private boolean isMinus;
 
 	@Column(name = "balance")
 	private double balance;
@@ -49,6 +49,12 @@ public class Account extends AbstractModel {
 
 	// @OneToOne(mappedBy = "stock")
 	private transient Stock stock;
+
+	@Column(name = "user_id")
+	private String userId;
+
+	// @OneToOne
+	private transient User user;
 
 	@Column(name = "branch_id")
 	private long branchId;
@@ -98,10 +104,5 @@ public class Account extends AbstractModel {
 
 	public void deposit(double amount) {
 		this.balance += amount;
-	}
-
-	public boolean isMinus() {
-		String s = Strings.nullToEmpty(this.isMinus);
-		return s.equalsIgnoreCase("Y");
 	}
 }

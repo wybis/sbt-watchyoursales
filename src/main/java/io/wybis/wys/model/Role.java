@@ -1,6 +1,8 @@
 package io.wybis.wys.model;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +19,17 @@ import lombok.Data;
 public class Role extends AbstractModel {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String ID_MANAGER = "manager";
+
+	public static final String ID_EMPLOYEE = "employee";
+
+	public static final String ID_CUSTOMER = "customer";
+
+	public static final String ID_DEALER = "dealer";
+
+	public static final List<String> ROLES = Arrays.asList(ID_MANAGER,
+			ID_EMPLOYEE, ID_CUSTOMER, ID_DEALER);
 
 	@Id
 	@Column(name = "id")

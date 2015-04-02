@@ -6,7 +6,7 @@ function homeController($rootScope, $scope, $log, $http, $filter, $timeout) {
 
 	$scope.execute = function(path) {
 		$http.get(path).success(function(response) {
-			//$log.info(response);
+			// $log.info(response);
 			$scope.message = response;
 		})
 	};
@@ -50,16 +50,14 @@ function homeController($rootScope, $scope, $log, $http, $filter, $timeout) {
 	$scope.saveMasterTriggered = false;
 	$scope.saveMaster = function() {
 		$scope.branchJsonClazz = 'active';
-		$timeout(function() {
-			var branchJson = $scope.branchJson;
-			var f = $http.post('system/saveMaster', branchJson.json);
-			f.success(function(response) {
-				$scope.message = response;
-				$scope.branchJsonClazz = 'disabled';
-			}).error(function(error) {
-				$scope.branchJsonClazz = 'disabled';
-			});
-		}, 5000);
+		var branchJson = $scope.branchJson;
+		var f = $http.post('console/addBranch', branchJson.json);
+		f.success(function(response) {
+			$scope.message = response;
+			$scope.branchJsonClazz = 'disabled';
+		}).error(function(error) {
+			$scope.branchJsonClazz = 'disabled';
+		});
 	};
 }
 appControllers.controller('homeController', homeController);

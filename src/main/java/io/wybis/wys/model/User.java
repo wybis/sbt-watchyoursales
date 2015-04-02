@@ -18,6 +18,8 @@ public class User extends AbstractModel {
 
 	private static final long serialVersionUID = 1L;
 
+	public static final String ID_KEY = "userId";
+
 	@Id
 	@Column(name = "id")
 	private long id;
@@ -32,7 +34,7 @@ public class User extends AbstractModel {
 	private String emailId;
 
 	@Column(name = "first_name")
-	private String firstNFame;
+	private String firstName;
 
 	@Column(name = "last_name")
 	private String lastName;
@@ -100,7 +102,7 @@ public class User extends AbstractModel {
 
 	public boolean isVirtualUser() {
 		String userId = "bvu-" + this.branchId;
-		return this.userId.equals(userId);
+		return this.userId == null ? false : this.userId.equals(userId);
 	}
 
 	public void setVirtualUser(boolean flag) {

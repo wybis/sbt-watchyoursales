@@ -24,6 +24,9 @@ public class Product extends AbstractModel {
 	@Column(name = "id")
 	private long id;
 
+	@Column(name = "type")
+	private String type;
+
 	@Column(name = "code")
 	private String code;
 

@@ -1,6 +1,6 @@
 package io.wybis.wys;
 
-public class Workbench {
+public class WorkbenchJava {
 
 	public static void main(String args[]) {
 
