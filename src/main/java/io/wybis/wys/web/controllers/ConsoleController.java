@@ -4,6 +4,8 @@ import io.wybis.wys.dto.ResponseDto;
 import io.wybis.wys.model.Branch;
 import io.wybis.wys.service.ConsoleService;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -95,6 +97,27 @@ public class ConsoleController extends AbstractController {
 			responseDto.setMessage(s);
 		} catch (Throwable t) {
 			String s = "Unable to add branch...";
+			responseDto.setType(ResponseDto.ERROR);
+			responseDto.setMessage(s);
+			responseDto.setData(Throwables.getStackTraceAsString(t));
+			t.printStackTrace();
+		}
+
+		return responseDto;
+	}
+	
+	@RequestMapping(value = "/branchs", method = RequestMethod.GET)
+	public @ResponseBody ResponseDto branchs(HttpSession session) {
+		ResponseDto responseDto = new ResponseDto();
+
+		try {
+			List<Branch> branchs = consoleService.branchs(session);
+			responseDto.setData(branchs);
+			responseDto.setType(ResponseDto.SUCCESS);
+			String s = "Successfully retrived branchs...";
+			responseDto.setMessage(s);
+		} catch (Throwable t) {
+			String s = "Unable to retrive branchs...";
 			responseDto.setType(ResponseDto.ERROR);
 			responseDto.setMessage(s);
 			responseDto.setData(Throwables.getStackTraceAsString(t));

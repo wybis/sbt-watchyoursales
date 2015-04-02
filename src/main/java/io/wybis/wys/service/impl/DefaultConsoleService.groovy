@@ -1,8 +1,13 @@
 package io.wybis.wys.service.impl;
 
 import groovy.util.logging.Slf4j
+import io.wybis.wys.constants.UserType
 import io.wybis.wys.model.Branch
 import io.wybis.wys.model.User
+import io.wybis.wys.repository.AccountRepository
+import io.wybis.wys.repository.BranchRepository
+import io.wybis.wys.repository.ProductRepository
+import io.wybis.wys.repository.UserRepository
 import io.wybis.wys.service.BranchService
 import io.wybis.wys.service.ConsoleService
 import io.wybis.wys.service.CustomerService
@@ -20,6 +25,18 @@ import org.springframework.transaction.annotation.Transactional
 @Slf4j
 public class DefaultConsoleService extends AbstractService implements
 ConsoleService {
+
+	@Resource
+	BranchRepository branchRepository
+
+	@Resource
+	AccountRepository accountRepository
+
+	@Resource
+	ProductRepository productRepository
+
+	@Resource
+	UserRepository userRepository
 
 	@Resource
 	BranchService branchService
@@ -78,5 +95,22 @@ ConsoleService {
 		}
 
 		log.info("adding branch finished...")
+	}
+
+	@Override
+	public List<Branch> branchs(HttpSession session) {
+		List<Branch> branchs = null;
+
+		branchs = this.branchRepository.findAll();
+
+		branchs.each { branch ->
+			branch.accounts = this.accountRepository.findByBranchId(branch.id)
+			branch.products = this.productRepository.findByBranchId(branch.id)
+			branch.employees = this.userRepository.findByBranchIdAndType(branch.id, UserType.EMPLOYEE)
+			branch.dealers = this.userRepository.findByBranchIdAndType(branch.id, UserType.DEALER)
+			branch.customers = this.userRepository.findByBranchIdAndType(branch.id, UserType.CUSTOMER)
+		}
+
+		return branchs;
 	}
 }

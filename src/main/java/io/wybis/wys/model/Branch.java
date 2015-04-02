@@ -57,6 +57,8 @@ public class Branch extends AbstractModel {
 	@Column(name = "parent_id")
 	private long parentId;
 
+	private transient List<Account> accounts;
+
 	private transient List<Product> products;
 
 	private transient List<User> employees;

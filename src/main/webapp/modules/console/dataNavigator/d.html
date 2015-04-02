@@ -1,12 +1,45 @@
-<div class="ui one column grid">
+<div class="ui grid">
 	
-	<div class="column">
-		<div class="ui grean raised segment">
-			<div class="ui green left ribbon label">Data Navigator</div>
-	    	<div class="ui item">
-	    		<pre id="respMessage">comming soon...</pre>
-	    	</div>
+	<div class="one column row">
+		<div class="column">
+			<table class="ui blue celled striped table">
+			<caption>Branchs - {{items.length}}</caption>
+			<thead>
+			<tr>
+				<th>#</th>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Employees</th>
+				<th>Dealers</th>
+				<th>Customers</th>
+				<th>Products</th>
+				<th>Accounts</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr x-ng-repeat="item in items">
+				<td class="right aligned">{{$index+1}}</td>
+				<td class="right aligned"><a href="#/dataNavigator/branchs/{{item.id}}">{{item.id}}</a></td>
+				<td>{{item.name}}</td>
+				<td class="right aligned"><a href="#/dataNavigator/branchs/{{item.id}}/employees">{{item.employees.length}}</a></td>
+				<td class="right aligned"><a href="#/dataNavigator/branchs/{{item.id}}/dealers">{{item.dealers.length}}</a></td>
+				<td class="right aligned"><a href="#/dataNavigator/branchs/{{item.id}}/customers">{{item.customers.length}}</a></td>
+				<td class="right aligned"><a href="#/dataNavigator/branchs/{{item.id}}/products">{{item.products.length}}</a></td>
+				<td class="right aligned"><a href="#/dataNavigator/branchs/{{item.id}}/accounts">{{item.accounts.length}}</a></td>
+			</tr>
+			</tbody>
+			</table>
 		</div>
 	</div>
-			
+	
+	<div class="one column row">
+		<div class="column">
+		<div class="ui segment">
+	    	<div class="ui item">
+	    		<pre>{{items | json}}</pre>
+	    	</div>
+		</div>
+		</div>
+	</div>
+
 </div>

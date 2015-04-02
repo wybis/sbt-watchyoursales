@@ -43,7 +43,8 @@ public class Order extends AbstractModel {
 	@Column(name = "type")
 	private String type;
 
-	private transient long baseUnit;
+	@Column(name = "base_unit")
+	private long baseUnit;
 
 	@Column(name = "unit")
 	private double unit;
@@ -57,13 +58,11 @@ public class Order extends AbstractModel {
 	@Column(name = "date")
 	private Date date;
 
-	private transient double averageRate;
-
 	@Column(name = "status")
 	private String status;
 
 	@Column(name = "customer_id")
-	private long customerId;
+	private long userId;
 
 	private transient User customer;
 
@@ -104,4 +103,10 @@ public class Order extends AbstractModel {
 	}
 
 	// domain operations
+
+	public void computeAmount() {
+		double value = (this.rate / this.baseUnit);
+		value = this.unit * value;
+		this.amount = value;
+	}
 }

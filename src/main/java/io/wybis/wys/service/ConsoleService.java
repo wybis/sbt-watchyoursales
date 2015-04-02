@@ -2,6 +2,8 @@ package io.wybis.wys.service;
 
 import io.wybis.wys.model.Branch;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 public interface ConsoleService {
@@ -13,5 +15,7 @@ public interface ConsoleService {
 	void clearTransactions(HttpSession session);
 
 	void addBranch(HttpSession session, Branch branch) throws Exception;
+
+	List<Branch> branchs(HttpSession session);
 
 }
