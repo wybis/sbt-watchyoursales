@@ -28,6 +28,11 @@ app.config(function($routeProvider, $locationProvider) {
 		controller : 'homeController'
 	});
 
+	$routeProvider.when('/dataNavigator', {
+		templateUrl : 'modules/console/dataNavigator/d.html',
+		controller : 'dataNavigatorController'
+	});
+
 	$routeProvider.when('/system/:pathId', {
 		templateUrl : 'modules/console/system/d.html',
 		controller : 'systemController'
